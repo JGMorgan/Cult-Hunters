@@ -81,6 +81,10 @@ public class Player extends Entity{
             pistolMove();
         }
 
+        if(weaponT=="sword"){
+            swordMove();
+        }
+
         if(Gdx.input.isKeyJustPressed(Input.Keys.K)) {
             ui.hit();
         }
@@ -94,8 +98,8 @@ public class Player extends Entity{
             if(bullets.get(i).isOutOfBounds()){
                 bullets.remove(i);
             }
-
         }
+
         batch.begin();
         batch.draw(texture, x, y);//, sprite.getWidth()/4, sprite.getHeight()/4);
         batch.end();
@@ -143,5 +147,17 @@ public class Player extends Entity{
     }
     public void pistolMove() {
 
+    }
+    public void swordMove(){
+
+        if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            bullets.add(new Sword(x, y, 'u'));
+        }else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+            bullets.add(new Sword(x, y, 'd'));
+        }else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+            bullets.add(new Sword(x, y, 'l'));
+        }else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+            bullets.add(new Sword(x, y, 'r'));
+        }
     }
 }

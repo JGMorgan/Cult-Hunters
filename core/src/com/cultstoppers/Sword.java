@@ -35,6 +35,10 @@ public class Sword extends Weapon {
             x+=speed;
         }
 
+        batch.begin();
+        batch.draw(sprite, x, y);
+        batch.end();
+
     };
 
     public boolean isOutOfBounds(){
