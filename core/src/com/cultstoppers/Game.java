@@ -8,16 +8,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
-	Player p;
+	State state;
 	@Override
-	public void create () { p = new Player(); }
+	public void create () {
+        state = new PlayState();
+    }
 
 	@Override
 	public void render () {
-        p.move();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        p.render();
+        state.render();
 	}
 
 }
