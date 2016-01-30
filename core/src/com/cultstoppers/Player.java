@@ -26,7 +26,7 @@ public class Player extends Entity{
         sprite = new Texture("roshi.png");
         hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
 
-        ui = new UserInterface();
+        ui = new UserInterface(health);
 
         bullets = new ArrayList<Weapon>();
 
