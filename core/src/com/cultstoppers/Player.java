@@ -117,13 +117,13 @@ public class Player extends Entity{
         }
     }
     public void machineMove(){
-        if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+        if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
             bullets.add(new MachineGun(x, y, 'u'));
-        }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
+        }else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
             bullets.add(new MachineGun(x, y, 'd'));
-        }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
+        }else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
             bullets.add(new MachineGun(x, y, 'l'));
-        }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
+        }else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             bullets.add(new MachineGun(x, y, 'r'));
 
         }

@@ -31,16 +31,31 @@ public class MachineGun extends Weapon{
         if (dir == 'u'){
             y+=speed;
             if (random == 0){
-                x-=Math.cos(((11*3.1415)/16)*speed);
+                x-=Math.floor(Math.cos(((11*3.1415)/16)*speed));
             }else if (random == 1){
-                x+=Math.cos(((11*3.1415)/16)*speed);
+                x+=Math.floor(Math.cos(((11*3.1415)/16)*speed));
             }
         }else if (dir == 'd'){
             y-=speed;
+            if (random == 0){
+                x-=Math.floor(Math.cos(((11*3.1415)/16)*speed));
+            }else if (random == 1){
+                x+=Math.floor(Math.cos(((11*3.1415)/16)*speed));
+            }
         }else if (dir == 'l'){
             x-=speed;
+            if (random == 0){
+                y-=Math.floor(Math.cos(((11*3.1415)/16)*speed));
+            }else if (random == 1){
+                y+=Math.floor(Math.cos(((11*3.1415)/16)*speed));
+            }
         }else if (dir == 'r'){
             x+=speed;
+            if (random == 0){
+                y-=Math.floor(Math.cos(((11 * 3.1415) / 16) * speed));
+            }else if (random == 1){
+                y+=Math.floor(Math.cos(((11 * 3.1415) / 16) * speed));
+            }
         }
         batch.begin();
         batch.draw(sprite, x, y);
