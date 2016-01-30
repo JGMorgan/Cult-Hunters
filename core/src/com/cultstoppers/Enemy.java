@@ -45,6 +45,10 @@ public class Enemy extends Entity{
         batch.end();
     }
 
+    public boolean isDead(){
+        return health <= 0;
+    }
+
     public void checkWall(){
         if((x > Gdx.graphics.getWidth() - sprite.getWidth()/4)){
             x = Gdx.graphics.getWidth() - sprite.getWidth()/4;

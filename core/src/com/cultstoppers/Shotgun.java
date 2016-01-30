@@ -91,14 +91,6 @@ public class Shotgun extends Weapon{
             x3 += Math.sin(-3.1415 / 12) * speed;
             x4 += Math.sin(-3.1415 / 6) * speed;
         }
-//        x1+=Math.ceil(Math.cos(3.1415 / 12) * speed);
-//        x2+=Math.ceil(Math.cos(3.1415/6)*speed);
-//        x3+=Math.ceil(Math.cos((-3.1415 / 12)) * speed);
-//        x4+=Math.ceil(Math.cos(-3.1415/6)*speed);
-//        y1+=Math.ceil(Math.sin(3.1415/12)*speed);
-//        y2+=Math.ceil(Math.sin(3.1415/6)*speed);
-//        y3+=Math.ceil(Math.sin(-3.1415/12)*speed);
-//        y4+=Math.ceil(Math.sin(-3.1415/6)*speed);
         batch.begin();
         batch.draw(sprite, x, y);
         batch.draw(sprite, x1, y1);
