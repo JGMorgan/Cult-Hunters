@@ -8,35 +8,18 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	int x = 0;
-	int y = 0;
+	Player p;
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+        p = new Player();
 	}
 
 	@Override
 	public void render () {
-        if(Gdx.input.isKeyPressed(Input.Keys.W)){
-            y++;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.S)){
-            y--;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.A)){
-            x--;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.D)){
-            x++;
-        }
+        p.move();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, x, y);
-		batch.end();
+        p.render();
 	}
 
 }
