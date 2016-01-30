@@ -44,6 +44,10 @@ public class Player extends Entity{
             ui.weaponTexture=ui.swordTexture;
             weaponT="sword";
         }
+        if(Gdx.input.isKeyPressed(Input.Keys.NUM_3)){
+            ui.weaponTexture=ui.machineTexture;
+            weaponT="machinegun";
+        }
         if(Gdx.input.isKeyPressed(Input.Keys.W)){
             y+=speed;
         }
@@ -58,17 +62,13 @@ public class Player extends Entity{
         }
 
         if(weaponT=="shotgun") {
-            if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-                bullets.add(new Shotgun(x, y, 'u'));
-            }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-                bullets.add(new Shotgun(x, y, 'd'));
-            }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-                bullets.add(new Shotgun(x, y, 'l'));
-            }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-                bullets.add(new Shotgun(x, y, 'r'));
-
-            }
+            shotgunMove();
         }
+
+        if(weaponT=="machinegun"){
+            machineMove();
+        }
+
         if(Gdx.input.isKeyJustPressed(Input.Keys.K)) {
             ui.hit();
         }
@@ -102,5 +102,30 @@ public class Player extends Entity{
     }
     public void updateHealth(int dmg) {
 
+    }
+
+    public void shotgunMove(){
+        if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            bullets.add(new Shotgun(x, y, 'u'));
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
+            bullets.add(new Shotgun(x, y, 'd'));
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
+            bullets.add(new Shotgun(x, y, 'l'));
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
+            bullets.add(new Shotgun(x, y, 'r'));
+
+        }
+    }
+    public void machineMove(){
+        if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            bullets.add(new MachineGun(x, y, 'u'));
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
+            bullets.add(new MachineGun(x, y, 'd'));
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
+            bullets.add(new MachineGun(x, y, 'l'));
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
+            bullets.add(new MachineGun(x, y, 'r'));
+
+        }
     }
 }

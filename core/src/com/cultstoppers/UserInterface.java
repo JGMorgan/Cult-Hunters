@@ -14,6 +14,7 @@ public class UserInterface{
     ArrayList<Texture> healthBar = new ArrayList<Texture>();
     Texture shotgunTexture = new Texture("Shotgun.png");
     Texture swordTexture = new Texture("swords.png");
+    Texture machineTexture = new Texture("swords.png");
     Texture weaponTexture=new Texture("blank.png");
     Weapon playerWeapon;
 
