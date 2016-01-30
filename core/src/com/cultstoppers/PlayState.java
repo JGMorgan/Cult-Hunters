@@ -12,13 +12,13 @@ public class PlayState extends State{
         p = new Player();
         enemies = new ArrayList<Enemy>();
         for(int i = 0; i < 5; i++){
-            enemies.add(new Enemy());
+            enemies.add(new Enemy(i));
         }
     }
     public void render(){
-        for(Enemy e : enemies){
-            e.render();
-            e.move(p);
+        for(int i = 0; i < enemies.size(); i++){
+            enemies.get(i).render();
+            enemies.get(i).move(p, enemies,i);
         }
         p.move();
         p.render();
