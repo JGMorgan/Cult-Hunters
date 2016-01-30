@@ -51,6 +51,7 @@ public class Player extends Entity{
         if(Gdx.input.isKeyJustPressed(Input.Keys.K)) {
             ui.hit();
         }
+        checkWall();
     }
     public void render(){
         for (int i = 0; i < bullets.size(); i++){
@@ -66,6 +67,18 @@ public class Player extends Entity{
         ui.render();
     }
 
+    public void checkWall(){
+        if((x > Gdx.graphics.getWidth() - sprite.getWidth()/4)){
+            x = Gdx.graphics.getWidth() - sprite.getWidth()/4;
+        }else if (x < 0){
+            x = 0;
+        }
+        if(y > Gdx.graphics.getHeight() - sprite.getHeight()/4){
+            y = Gdx.graphics.getHeight() - sprite.getHeight()/4;
+        }else if (y < 0){
+            y = 0;
+        }
+    }
     public void updateHealth(int dmg) {
 
     }

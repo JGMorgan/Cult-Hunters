@@ -17,4 +17,8 @@ public class Enemy extends Entity{
         sprite = new Texture("megaman.png");
         hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
     }
+
+    public void move(){
+        
+    }
 }
