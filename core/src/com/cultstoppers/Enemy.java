@@ -12,22 +12,28 @@ import java.util.Random;
  * Created by jose on 1/29/16.
  */
 public class Enemy extends Entity{
+    Random r;
+    int random;
     public Enemy(int i){
-        Random r = new Random();
+        r = new Random();
+        random = 0;
         x = r.nextInt(Gdx.graphics.getWidth());
         y = r.nextInt(Gdx.graphics.getHeight());
         health = 1;
-        speed = i%5+1;
+        speed = i%3+1;
         batch = new SpriteBatch();
+        stateTime = 0f;
         sprite = new Texture("megaman.png");
         hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
     }
     public Enemy(){
-        Random r = new Random();
+        r = new Random();
+        random = 0;
         x = r.nextInt(Gdx.graphics.getWidth());
         y = r.nextInt(Gdx.graphics.getHeight());
         health = 1;
         speed = 2;
+        stateTime = 1f;
         batch = new SpriteBatch();
         sprite = new Texture("megaman.png");
         hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
@@ -35,6 +41,7 @@ public class Enemy extends Entity{
 
     public void move(Player p, ArrayList<Enemy> enemies,int i){
         hitbox.setPosition(x,y);
+        stateTime += Gdx.graphics.getDeltaTime();
         checkHit(p);
         int tempX =p.x - x;
         int tempY = p.y - y;
@@ -51,15 +58,34 @@ public class Enemy extends Entity{
 //                    y = y-2;
 //            }
         }
-        if (tempX > 0) {
-            x += speed;
-        } else if (tempX < 0) {
-            x -= speed;
-        }
-        if (tempY < 0) {
-            y -= speed;
-        } else if (tempY > 0) {
-            y += speed;
+        if(speed == 3) {
+            if (tempX > 0) {
+                x += speed;
+            } else if (tempX < 0) {
+                x -= speed;
+            }
+            if (tempY < 0) {
+                y -= speed;
+            } else if (tempY > 0) {
+                y += speed;
+            }
+        }else if(speed == 2 || speed == 1){
+
+            if(Math.floor(stateTime)%2==0){
+                random = r.nextInt(5);
+                stateTime = 1f;
+            }
+            if(random==0){
+                //x += speed;
+            }else if(random==1){
+                x -= speed;
+            }else if(random==2){
+                y -= speed;
+            }else if(random==3){
+                y += speed;
+            }else if(random==4){
+                x += speed;
+            }
         }
         checkWall();
     }
