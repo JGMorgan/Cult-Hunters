@@ -69,7 +69,28 @@ public class Shotgun extends Weapon{
             y3 += Math.sin(-3.1415 / 12) * speed;
             y4 += Math.sin(-3.1415 / 6) * speed;
         }
-
+        else if(dir == 'u') {
+            y += speed;
+            y1 += Math.cos(3.1415 / 12) * speed;
+            y2 += Math.cos(3.1415 / 6) * speed;
+            y3 += Math.cos(-3.1415 / 12) * speed;
+            y4 += Math.cos(-3.1415 / 6) * speed;
+            x1 += Math.sin(3.1415 / 12) * speed;
+            x2 += Math.sin(3.1415 / 6) * speed;
+            x3 += Math.sin(-3.1415 / 12) * speed;
+            x4 += Math.sin(-3.1415 / 6) * speed;
+        }
+        else if(dir == 'd') {
+            y -= speed;
+            y1 -= Math.cos(3.1415 / 12) * speed;
+            y2 -= Math.cos(3.1415 / 6) * speed;
+            y3 -= Math.cos(-3.1415 / 12) * speed;
+            y4 -= Math.cos(-3.1415 / 6) * speed;
+            x1 += Math.sin(3.1415 / 12) * speed;
+            x2 += Math.sin(3.1415 / 6) * speed;
+            x3 += Math.sin(-3.1415 / 12) * speed;
+            x4 += Math.sin(-3.1415 / 6) * speed;
+        }
 //        x1+=Math.ceil(Math.cos(3.1415 / 12) * speed);
 //        x2+=Math.ceil(Math.cos(3.1415/6)*speed);
 //        x3+=Math.ceil(Math.cos((-3.1415 / 12)) * speed);
@@ -90,7 +111,7 @@ public class Shotgun extends Weapon{
     public boolean isOutOfBounds(){
         return (x > initX + Gdx.graphics.getWidth()/5) ||
                 (x < initX - Gdx.graphics.getWidth()/5) ||
-                (y > initY + Gdx.graphics.getHeight()/5) ||
-                (y < initY - Gdx.graphics.getHeight()/5);
+                (y > initY + Gdx.graphics.getWidth()/5) ||
+                (y < initY - Gdx.graphics.getWidth()/5);
     }
 }

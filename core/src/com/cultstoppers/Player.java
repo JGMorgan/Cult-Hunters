@@ -55,9 +55,9 @@ public class Player extends Entity{
         if(weaponT=="shotgun") {
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            //bullets.add(new Shotgun(x, y, 'u'));
+            bullets.add(new Shotgun(x, y, 'u'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            //bullets.add(new Shotgun(x, y, 'd'));
+            bullets.add(new Shotgun(x, y, 'd'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
             bullets.add(new Shotgun(x, y, 'l'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
