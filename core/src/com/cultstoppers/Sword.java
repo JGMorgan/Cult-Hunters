@@ -25,6 +25,7 @@ public class Sword extends Weapon {
     }
 
     public void update(){
+        hitbox.setPosition(x,y);
         if (dir == 'u'){
             y+=speed;
         }else if (dir == 'd'){
@@ -42,9 +43,9 @@ public class Sword extends Weapon {
     };
 
     public boolean isOutOfBounds(){
-        return (x > initX + Gdx.graphics.getWidth()/10) ||
-                (x < initX - Gdx.graphics.getWidth()/10) ||
-                (y > initY + Gdx.graphics.getWidth()/10) ||
-                (y < initY - Gdx.graphics.getWidth()/10);
+        return (x > initX + Gdx.graphics.getWidth()/15) ||
+                (x < initX - Gdx.graphics.getWidth()/15) ||
+                (y > initY + Gdx.graphics.getWidth()/15) ||
+                (y < initY - Gdx.graphics.getWidth()/15);
     }
 }
