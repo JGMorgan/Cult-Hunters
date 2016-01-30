@@ -26,7 +26,7 @@ public class Player extends Entity{
         x = 0;
         y = 0;
         health = 8;
-        speed = 5;
+        speed = 7;
         batch = new SpriteBatch();
         sprite = new Texture("roshi.png");
         spritesheet = new Texture("roshisheet.png");
