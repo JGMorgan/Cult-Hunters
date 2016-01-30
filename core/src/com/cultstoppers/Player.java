@@ -48,6 +48,11 @@ public class Player extends Entity{
             ui.weaponTexture=ui.machineTexture;
             weaponT="machinegun";
         }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.NUM_3)){
+            ui.weaponTexture=ui.pistolTexture;
+            weaponT="pistol";
+        }
         if(Gdx.input.isKeyPressed(Input.Keys.W)){
             y+=speed;
         }
@@ -67,6 +72,9 @@ public class Player extends Entity{
 
         if(weaponT=="machinegun"){
             machineMove();
+        }
+        if(weaponT=="pistol"){
+            pistolMove();
         }
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.K)) {
@@ -127,5 +135,8 @@ public class Player extends Entity{
             bullets.add(new MachineGun(x, y, 'r'));
 
         }
+    }
+    public void pistolMove(){
+
     }
 }
