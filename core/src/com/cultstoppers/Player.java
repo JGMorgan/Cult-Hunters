@@ -49,7 +49,7 @@ public class Player extends Entity{
             weaponT="machinegun";
         }
 
-        if(Gdx.input.isKeyPressed(Input.Keys.NUM_3)){
+        if(Gdx.input.isKeyPressed(Input.Keys.NUM_4)){
             ui.weaponTexture=ui.pistolTexture;
             weaponT="pistol";
         }
