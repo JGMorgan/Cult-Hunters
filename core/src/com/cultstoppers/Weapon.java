@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Rectangle;
  */
 public abstract class Weapon {
     int x,y,initX,initY;
+    char dir;
     int damage;
     Texture sprite;
     SpriteBatch batch;

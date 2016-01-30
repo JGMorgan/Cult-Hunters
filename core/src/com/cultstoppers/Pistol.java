@@ -9,11 +9,12 @@ import com.badlogic.gdx.math.Rectangle;
  */
 public class Pistol extends Weapon {
     int speed;
-    public Pistol(int x, int y){
+    public Pistol(int x, int y, char dir){
         batch = new SpriteBatch();
         sprite = new Texture("bullet.png");
         speed = 10;
         damage = 1;
+        this.dir = dir;
         this.x = x;
         this.y = y;
         hitbox = new Rectangle(this.x,this.y,sprite.getWidth(),sprite.getHeight());
