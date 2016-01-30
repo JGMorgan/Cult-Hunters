@@ -25,7 +25,6 @@ public class Player extends Entity{
         batch = new SpriteBatch();
         sprite = new Texture("roshi.png");
         hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
-
         ui = new UserInterface();
 
         bullets = new ArrayList<Weapon>();
@@ -47,6 +46,9 @@ public class Player extends Entity{
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             bullets.add(new Shotgun(x,y));
         }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.K)) {
+            ui.hit();
+        }
     }
     public void render(){
         for (int i = 0; i < bullets.size(); i++){
@@ -57,7 +59,7 @@ public class Player extends Entity{
 
         }
         batch.begin();
-        batch.draw(sprite, x, y);
+        batch.draw(sprite, x, y, sprite.getWidth()/4, sprite.getHeight()/4);
         batch.end();
         ui.render();
     }

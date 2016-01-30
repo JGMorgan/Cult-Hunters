@@ -11,7 +11,7 @@ public class UserInterface{
     int healthX, healthY, numHealth = 5, roomName, roomNum;
     Texture healthIcon = new Texture("heart.png");
     SpriteBatch batch = new SpriteBatch();
-    ArrayList<Texture> healthBar = new ArrayList<>();
+    ArrayList<Texture> healthBar = new ArrayList<Texture>();
 
 
     public UserInterface(){
@@ -27,5 +27,10 @@ public class UserInterface{
         for(int i = 0; i < numHealth; i++)
             batch.draw(healthBar.get(i), (healthX*(i+1)), healthY);
         batch.end();
+    }
+
+    public void hit(){
+        healthBar.remove(healthBar.size()-1);
+        numHealth--;
     }
 }
