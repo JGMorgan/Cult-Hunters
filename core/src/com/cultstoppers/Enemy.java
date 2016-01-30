@@ -20,7 +20,7 @@ public class Enemy extends Entity{
         speed = i%3+1;
         batch = new SpriteBatch();
         sprite = new Texture("megaman.png");
-        hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
+        hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
     }
     public Enemy(){
         Random r = new Random();
@@ -30,10 +30,12 @@ public class Enemy extends Entity{
         speed = 2;
         batch = new SpriteBatch();
         sprite = new Texture("megaman.png");
-        hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
+        hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
     }
 
     public void move(Player p, ArrayList<Enemy> enemies,int i){
+        hitbox.setPosition(x,y);
+        checkHit(p);
         int tempX =p.x - x;
         int tempY = p.y - y;
 
@@ -62,6 +64,14 @@ public class Enemy extends Entity{
         checkWall();
     }
 
+    public void checkHit(Player p){
+        for(int i = 0; i < p.bullets.size(); i++){
+            if(p.bullets.get(i).hit(hitbox)){
+                health--;
+            }
+        }
+
+    }
     public void render(){
         batch.begin();
         batch.draw(sprite, x, y, sprite.getWidth() / 4, sprite.getHeight() / 4);

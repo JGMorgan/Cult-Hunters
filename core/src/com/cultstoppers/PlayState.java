@@ -19,6 +19,9 @@ public class PlayState extends State{
         for(int i = 0; i < enemies.size(); i++){
             enemies.get(i).render();
             enemies.get(i).move(p, enemies,i);
+            if(enemies.get(i).isDead()){
+                enemies.remove(i);
+            }
         }
         p.move();
         p.render();

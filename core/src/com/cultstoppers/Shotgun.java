@@ -47,6 +47,7 @@ public class Shotgun extends Weapon{
 
     @Override
     public void update() {
+        hitbox.setPosition(x,y);
         if(dir == 'r') {
             x += speed;
             x1 += Math.cos(3.1415 / 12) * speed;

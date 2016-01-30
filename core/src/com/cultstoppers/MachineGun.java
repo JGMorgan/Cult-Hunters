@@ -28,6 +28,7 @@ public class MachineGun extends Weapon{
 
     @Override
     public void update() {
+        hitbox.setPosition(x,y);
         if (dir == 'u'){
             y+=speed;
             if (random == 0){

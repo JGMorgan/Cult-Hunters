@@ -39,6 +39,7 @@ public class Player extends Entity{
 
     }
     public void move(){
+        hitbox.setPosition(x,y);
         if(Gdx.input.isKeyPressed(Input.Keys.NUM_1)){
             ui.weaponTexture=ui.shotgunTexture;
             weaponT="shotgun";

@@ -22,6 +22,7 @@ public class Pistol extends Weapon {
 
     @Override
     public void update() {
+        hitbox.setPosition(x,y);
         if (dir == 'u'){
             y+=speed;
         }else if (dir == 'd'){

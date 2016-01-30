@@ -25,4 +25,8 @@ public abstract class Weapon {
                 (y < -(Gdx.graphics.getHeight() * 1.5));
     }
 
+    public boolean hit(Rectangle hitbox){
+        return hitbox.contains(this.hitbox);
+    }
+
 }
