@@ -29,4 +29,9 @@ public class UserInterface{
             batch.draw(healthBar.get(i), (healthX*(i+1)), healthY);
         batch.end();
     }
+
+    public void hit(){
+        healthBar.remove(healthBar.size()-1);
+        numHealth--;
+    }
 }
