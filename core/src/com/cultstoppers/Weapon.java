@@ -26,7 +26,7 @@ public abstract class Weapon {
     }
 
     public boolean hit(Rectangle hitbox){
-        return hitbox.contains(this.hitbox);
+        return hitbox.overlaps(this.hitbox);
     }
 
 }
