@@ -14,6 +14,7 @@ public class Shotgun extends Weapon{
     int x1,x2,x3,x4;
     int y1,y2,y3,y4;
     public Shotgun(int x, int y){
+        WeaponType="shotgun";
         Rectangle hitbox2;
         Rectangle hitbox3;
         Rectangle hitbox4;

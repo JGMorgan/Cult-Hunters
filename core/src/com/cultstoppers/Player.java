@@ -17,6 +17,9 @@ public class Player extends Entity{
 
     ArrayList<Weapon> bullets;
 
+    Weapon currentWeapon;
+
+    String weaponT;
     public Player(){
         x = 0;
         y = 0;
@@ -33,6 +36,9 @@ public class Player extends Entity{
 
     }
     public void move(){
+        if(Gdx.input.isKeyPressed(Input.Keys.NUM_1)){
+            weaponT="shotgun";
+        }
         if(Gdx.input.isKeyPressed(Input.Keys.W)){
             y+=speed;
         }
@@ -45,14 +51,16 @@ public class Player extends Entity{
         if(Gdx.input.isKeyPressed(Input.Keys.D)) {
             x += speed;
         }
-        if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            bullets.add(new Shotgun(x, y));
-        }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
+        if(weaponT=="shotgun") {
+            if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+                bullets.add(new Shotgun(x, y));
+            } else if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
 
-        }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
+            } else if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
 
-        }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
+            } else if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
 
+            }
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.K)) {
             ui.hit();

@@ -14,7 +14,7 @@ public abstract class Weapon {
     Texture sprite;
     SpriteBatch batch;
     Rectangle hitbox;
-
+    String WeaponType;
     public abstract void update();
 
     public boolean isOutOfBounds(){
