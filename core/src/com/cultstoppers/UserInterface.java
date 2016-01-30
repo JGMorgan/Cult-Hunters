@@ -13,6 +13,8 @@ public class UserInterface{
     SpriteBatch batch = new SpriteBatch();
     ArrayList<Texture> healthBar = new ArrayList<Texture>();
     Texture shotgunTexture = new Texture("Shotgun.png");
+    Texture swordTexture = new Texture("swords.png");
+    Texture weaponTexture=new Texture("blank.png");
     Weapon playerWeapon;
 
     public UserInterface(int health){
@@ -33,7 +35,7 @@ public class UserInterface{
             batch.draw(healthBar.get(i), (healthX*(i+1)), healthY);
         batch.end();
         batch.begin();
-            batch.draw(shotgunTexture,weaponX,weaponY);
+            batch.draw(weaponTexture,weaponX,weaponY);
         batch.end();
     }
 

@@ -37,7 +37,12 @@ public class Player extends Entity{
     }
     public void move(){
         if(Gdx.input.isKeyPressed(Input.Keys.NUM_1)){
+            ui.weaponTexture=ui.shotgunTexture;
             weaponT="shotgun";
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.NUM_2)){
+            ui.weaponTexture=ui.swordTexture;
+            weaponT="sword";
         }
         if(Gdx.input.isKeyPressed(Input.Keys.W)){
             y+=speed;
@@ -54,16 +59,16 @@ public class Player extends Entity{
 
         if(weaponT=="shotgun") {
 
-        if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            bullets.add(new Shotgun(x, y, 'u'));
-        }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            bullets.add(new Shotgun(x, y, 'd'));
-        }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            bullets.add(new Shotgun(x, y, 'l'));
-        }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            bullets.add(new Shotgun(x, y, 'r'));
+            if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+                bullets.add(new Shotgun(x, y, 'u'));
+            }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
+                bullets.add(new Shotgun(x, y, 'd'));
+            }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
+                bullets.add(new Shotgun(x, y, 'l'));
+            }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
+                bullets.add(new Shotgun(x, y, 'r'));
 
-        }
+            }
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.K)) {
             ui.hit();
