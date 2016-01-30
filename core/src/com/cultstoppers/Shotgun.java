@@ -13,6 +13,10 @@ public class Shotgun extends Weapon{
     int x1,x2,x3,x4;
     int y1,y2,y3,y4;
     public Shotgun(int x, int y){
+        Rectangle hitbox2;
+        Rectangle hitbox3;
+        Rectangle hitbox4;
+        Rectangle hitbox5;
         batch = new SpriteBatch();
         sprite = new Texture("bullet.png");
         speed = 10;
@@ -28,6 +32,10 @@ public class Shotgun extends Weapon{
         this.y3 = y;
         this.y4 = y;
         hitbox = new Rectangle(this.x,this.y,sprite.getWidth(),sprite.getHeight());
+        hitbox2 = new Rectangle(this.x1,this.y1,sprite.getWidth(),sprite.getHeight());
+        hitbox3 = new Rectangle(this.x,this.y,sprite.getWidth(),sprite.getHeight());
+        hitbox4 = new Rectangle(this.x,this.y,sprite.getWidth(),sprite.getHeight());
+        hitbox5 = new Rectangle(this.x,this.y,sprite.getWidth(),sprite.getHeight());
     }
 
     @Override
@@ -40,7 +48,7 @@ public class Shotgun extends Weapon{
         y1+=Math.sin(3.1415/12)*speed;
         y2+=Math.sin(3.1415/6)*speed;
         y3+=Math.sin(-3.1415/12)*speed;
-        y4+=Math.sin(3.1415/6)*speed;
+        y4+=Math.sin(-3.1415/6)*speed;
 
 //        x1+=Math.ceil(Math.cos(3.1415 / 12) * speed);
 //        x2+=Math.ceil(Math.cos(3.1415/6)*speed);
