@@ -14,7 +14,7 @@ public class Enemy extends Entity{
         health = 1;
         speed = 2;
         batch = new SpriteBatch();
-        sprite = new Texture("badlogic.jpg");
+        sprite = new Texture("megaman.png");
         hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
     }
 }

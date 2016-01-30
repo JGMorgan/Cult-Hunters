@@ -16,7 +16,7 @@ public class Player extends Entity{
         health = 1;
         speed = 4;
         batch = new SpriteBatch();
-        sprite = new Texture("badlogic.jpg");
+        sprite = new Texture("roshi.png");
         hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
     }
     public void move(){
