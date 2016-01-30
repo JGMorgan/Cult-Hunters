@@ -1,5 +1,6 @@
 package com.cultstoppers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -21,6 +22,8 @@ public class Shotgun extends Weapon{
         sprite = new Texture("bullet.png");
         speed = 10;
         damage = 1;
+        initX = x;
+        initY = y;
         this.x = x;
         this.x1 = x;
         this.x2 = x;
@@ -33,9 +36,9 @@ public class Shotgun extends Weapon{
         this.y4 = y;
         hitbox = new Rectangle(this.x,this.y,sprite.getWidth(),sprite.getHeight());
         hitbox2 = new Rectangle(this.x1,this.y1,sprite.getWidth(),sprite.getHeight());
-        hitbox3 = new Rectangle(this.x,this.y,sprite.getWidth(),sprite.getHeight());
-        hitbox4 = new Rectangle(this.x,this.y,sprite.getWidth(),sprite.getHeight());
-        hitbox5 = new Rectangle(this.x,this.y,sprite.getWidth(),sprite.getHeight());
+        hitbox3 = new Rectangle(this.x2,this.y2,sprite.getWidth(),sprite.getHeight());
+        hitbox4 = new Rectangle(this.x3,this.y3,sprite.getWidth(),sprite.getHeight());
+        hitbox5 = new Rectangle(this.x4,this.y4,sprite.getWidth(),sprite.getHeight());
     }
 
     @Override
@@ -65,5 +68,12 @@ public class Shotgun extends Weapon{
         batch.draw(sprite, x3, y3);
         batch.draw(sprite, x4, y4);
         batch.end();
+    }
+
+    public boolean isOutOfBounds(){
+        return (x > initX + Gdx.graphics.getWidth()/5) ||
+                (x < initX - Gdx.graphics.getWidth()/5) ||
+                (y > initY + Gdx.graphics.getHeight()/5) ||
+                (y < initY - Gdx.graphics.getHeight()/5);
     }
 }
