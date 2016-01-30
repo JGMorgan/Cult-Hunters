@@ -10,14 +10,17 @@ import com.badlogic.gdx.math.Rectangle;
  * Created by jose on 1/29/16.
  */
 public class Player extends Entity{
+    UserInterface ui;
+
     public Player(){
         x = 0;
         y = 0;
-        health = 1;
-        speed = 4;
+        health = 8;
+        speed = 5;
         batch = new SpriteBatch();
         sprite = new Texture("roshi.png");
         hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
+        ui = new UserInterface();
     }
     public void move(){
         if(Gdx.input.isKeyPressed(Input.Keys.W)){
@@ -37,5 +40,10 @@ public class Player extends Entity{
         batch.begin();
         batch.draw(sprite, x, y);
         batch.end();
+        ui.render();
+    }
+
+    public void updateHealth(int dmg) {
+
     }
 }

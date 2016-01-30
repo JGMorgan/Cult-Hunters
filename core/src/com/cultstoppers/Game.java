@@ -10,9 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Game extends ApplicationAdapter {
 	Player p;
 	@Override
-	public void create () {
-        p = new Player();
-	}
+	public void create () { p = new Player(); }
 
 	@Override
 	public void render () {
