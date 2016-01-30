@@ -20,7 +20,6 @@ public class UserInterface{
         healthY = Gdx.graphics.getHeight() - 50;
         for(int i = 0; i < numHealth; i++)
             healthBar.add(healthIcon);
-
     }
 
     public void render() {
