@@ -13,7 +13,9 @@ public class Shotgun extends Weapon{
     int speed;
     int x1,x2,x3,x4;
     int y1,y2,y3,y4;
-    public Shotgun(int x, int y){
+
+
+    public Shotgun(int x, int y, char dir){
         WeaponType="shotgun";
         Rectangle hitbox2;
         Rectangle hitbox3;
@@ -25,6 +27,7 @@ public class Shotgun extends Weapon{
         damage = 1;
         initX = x;
         initY = y;
+        this.dir = dir;
         this.x = x;
         this.x1 = x;
         this.x2 = x;
@@ -44,15 +47,28 @@ public class Shotgun extends Weapon{
 
     @Override
     public void update() {
-        x+=speed;
-        x1+=Math.cos(3.1415/12)*speed;
-        x2+=Math.cos(3.1415/6)*speed;
-        x3+=Math.cos(-3.1415/12)*speed;
-        x4+=Math.cos(-3.1415/6)*speed;
-        y1+=Math.sin(3.1415/12)*speed;
-        y2+=Math.sin(3.1415/6)*speed;
-        y3+=Math.sin(-3.1415/12)*speed;
-        y4+=Math.sin(-3.1415/6)*speed;
+        if(dir == 'r') {
+            x += speed;
+            x1 += Math.cos(3.1415 / 12) * speed;
+            x2 += Math.cos(3.1415 / 6) * speed;
+            x3 += Math.cos(-3.1415 / 12) * speed;
+            x4 += Math.cos(-3.1415 / 6) * speed;
+            y1 += Math.sin(3.1415 / 12) * speed;
+            y2 += Math.sin(3.1415 / 6) * speed;
+            y3 += Math.sin(-3.1415 / 12) * speed;
+            y4 += Math.sin(-3.1415 / 6) * speed;
+        }
+        else if(dir == 'l') {
+            x -= speed;
+            x1 -= Math.cos(3.1415 / 12) * speed;
+            x2 -= Math.cos(3.1415 / 6) * speed;
+            x3 -= Math.cos(-3.1415 / 12) * speed;
+            x4 -= Math.cos(-3.1415 / 6) * speed;
+            y1 += Math.sin(3.1415 / 12) * speed;
+            y2 += Math.sin(3.1415 / 6) * speed;
+            y3 += Math.sin(-3.1415 / 12) * speed;
+            y4 += Math.sin(-3.1415 / 6) * speed;
+        }
 
 //        x1+=Math.ceil(Math.cos(3.1415 / 12) * speed);
 //        x2+=Math.ceil(Math.cos(3.1415/6)*speed);
