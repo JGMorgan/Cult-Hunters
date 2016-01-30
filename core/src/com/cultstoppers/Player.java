@@ -139,10 +139,9 @@ public class Player extends Entity{
             bullets.add(new MachineGun(x, y, 'l'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             bullets.add(new MachineGun(x, y, 'r'));
-
         }
     }
-    public void pistolMove(){
+    public void pistolMove() {
 
     }
 }
