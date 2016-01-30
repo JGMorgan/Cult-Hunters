@@ -13,7 +13,7 @@ public class Player extends Entity{
         x = 0;
         y = 0;
         health = 1;
-        speed = 5;
+        speed = 4;
         batch = new SpriteBatch();
         sprite = new Texture("badlogic.jpg");
     }
