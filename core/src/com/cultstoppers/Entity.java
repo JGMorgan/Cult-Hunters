@@ -1,7 +1,9 @@
 package com.cultstoppers;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 /**
@@ -10,6 +12,11 @@ import com.badlogic.gdx.math.Rectangle;
 public class Entity {
     int x,y,speed,health;
     Texture sprite;
+    Texture spritesheet;
+    TextureRegion[][] walkFrames;
     SpriteBatch batch;
     Rectangle hitbox;
+    Animation animRight;
+    Animation animLeft;
+    float stateTime;
 }

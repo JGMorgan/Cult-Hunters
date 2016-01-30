@@ -3,7 +3,9 @@ package com.cultstoppers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ public class Player extends Entity{
     UserInterface ui;
 
     ArrayList<Weapon> bullets;
-
+    TextureRegion texture;
     Weapon currentWeapon;
 
     String weaponT;
@@ -27,11 +29,12 @@ public class Player extends Entity{
         speed = 5;
         batch = new SpriteBatch();
         sprite = new Texture("roshi.png");
+        spritesheet = new Texture("roshisheet.png");
         hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
-
+        walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth()/7, spritesheet.getHeight()/2);
         ui = new UserInterface(health);
-
-
+        animRight = new Animation(1f, walkFrames[0]);
+        animLeft = new Animation(1f, walkFrames[1]);
         bullets = new ArrayList<Weapon>();
 
     }
@@ -83,6 +86,8 @@ public class Player extends Entity{
         checkWall();
     }
     public void render(){
+        stateTime += Gdx.graphics.getDeltaTime();
+        texture = animRight.getKeyFrame(stateTime, true);
         for (int i = 0; i < bullets.size(); i++){
             bullets.get(i).update();
             if(bullets.get(i).isOutOfBounds()){
@@ -91,7 +96,7 @@ public class Player extends Entity{
 
         }
         batch.begin();
-        batch.draw(sprite, x, y, sprite.getWidth()/4, sprite.getHeight()/4);
+        batch.draw(texture, x, y);//, sprite.getWidth()/4, sprite.getHeight()/4);
         batch.end();
         ui.render();
     }
