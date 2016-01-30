@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Rectangle;
  * Created by jose on 1/29/16.
  */
 public abstract class Weapon {
-    int x,y;
+    int x,y,initX,initY;
     int damage;
     Texture sprite;
     SpriteBatch batch;
@@ -21,7 +21,7 @@ public abstract class Weapon {
         return (x > Gdx.graphics.getWidth() * 1.5) ||
                 (x < -(Gdx.graphics.getWidth() * 1.5)) ||
                 (y > Gdx.graphics.getHeight() * 1.5) ||
-                (-y < -(Gdx.graphics.getHeight() * 1.5));
+                (y < -(Gdx.graphics.getHeight() * 1.5));
     }
 
 }
