@@ -25,7 +25,7 @@ public class PlayState extends State{
     SpriteBatch batch;
     private BitmapFont font;
     int mapCount=0;
-
+    int healthcount;
         public PlayState(){
             p = new Player();
             font = new BitmapFont();
@@ -78,6 +78,7 @@ public class PlayState extends State{
                         altar = null;
                         mapCount=0;
                         bossCount++;
+
                     }
                 }
             }
@@ -102,12 +103,19 @@ public class PlayState extends State{
                 }
                 mapCount=mapCount+1;
                 mapFinish();
+                if(mapCount%5==0){
+
+                    healthcount=p.health;
+                    if((healthcount!=20)){
+                        p=new Player();
+                        p.health=healthcount+3;
+                    }
+                }
 
                 if(mapCount%4==0){
                     int altarCorner;
                     altarCorner=altarGen.nextInt(4)+1;
                     enemies.add(boss);
-
                     altar = new Altar();
                     switch(altarCorner){
                         case 1:altar.y=400;
