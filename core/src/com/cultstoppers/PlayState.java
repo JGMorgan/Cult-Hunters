@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class PlayState extends State{
     Boss boss = new Boss();
+    Altar altar=new Altar();
     ArrayList<Boss> bosslist = new ArrayList<Boss>();
     Player p;
     Map m;
@@ -58,7 +59,7 @@ public class PlayState extends State{
             p.render();
             if(mapCount==3){
                 boss.render();
-
+                altar.render();
             }
             batch.begin();
             batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
