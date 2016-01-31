@@ -198,8 +198,8 @@ public class Player extends Entity{
     public void checkHit(Enemy e){
         for(int i = 0; i < e.bullets.size(); i++){
             if(e.bullets.get(i).hit(hitbox)){
+                health-=e.bullets.get(i).damage;
                 e.bullets.remove(i);
-                health--;
             }
         }
 
