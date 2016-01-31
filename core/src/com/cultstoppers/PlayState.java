@@ -43,6 +43,7 @@ public class PlayState extends State{
             } else {
                 m.render();
                 for (int i = 0; i < enemies.size(); i++) {
+                    p.checkHit(enemies.get(i));
                     enemies.get(i).render();
                     enemies.get(i).move(p, enemies, i);
                     if (enemies.get(i).isDead()) {

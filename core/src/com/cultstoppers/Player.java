@@ -20,9 +20,10 @@ public class Player extends Entity{
     ArrayList<Weapon> bullets;
     TextureRegion texture;
     Weapon currentWeapon;
-
+    boolean canShoot;
     String weaponT;
     public Player(){
+        canShoot = true;
         x = 0;
         y = 0;
         health = 8;
@@ -120,9 +121,6 @@ public class Player extends Entity{
             y = 0;
         }
     }
-    public void updateHealth(int dmg) {
-
-    }
 
     public void shotgunMove(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
@@ -161,5 +159,14 @@ public class Player extends Entity{
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
             bullets.add(new Sword(x, y, 'r'));
         }
+    }
+
+    public void checkHit(Enemy e){
+        for(int i = 0; i < e.bullets.size(); i++){
+            if(e.bullets.get(i).hit(hitbox)){
+                health--;
+            }
+        }
+
     }
 }
