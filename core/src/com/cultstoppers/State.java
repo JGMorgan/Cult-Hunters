@@ -5,4 +5,5 @@ package com.cultstoppers;
  */
 public abstract class State {
     public abstract void render();
+    public abstract boolean changeState();
 }

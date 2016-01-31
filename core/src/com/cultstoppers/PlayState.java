@@ -56,4 +56,9 @@ public class PlayState extends State{
         batch.end();
         p.renderUI();
         }
+
+    @Override
+    public boolean changeState() {
+        return false;
     }
+}
