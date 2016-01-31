@@ -45,7 +45,12 @@ public class Player extends Entity{
     public void move(){
         hitbox.setPosition(x, y);
         stateTime += Gdx.graphics.getDeltaTime();
-        texture = animDownLeft.getKeyFrame(0, true);
+        if(dir[0]){
+            texture = animUpLeft.getKeyFrame(0, true);
+        }else{
+            texture = animDownLeft.getKeyFrame(0, true);
+        }
+
         if(Gdx.input.isKeyPressed(Input.Keys.NUM_1)){
             ui.weaponTexture=ui.shotgunTexture;
             weaponT="shotgun";
