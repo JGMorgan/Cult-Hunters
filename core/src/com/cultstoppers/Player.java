@@ -32,7 +32,7 @@ public class Player extends Entity{
         batch = new SpriteBatch();
         //sprite = new Texture("Characters/CatspriteSheetV_01.png");
         spritesheet = new Texture("Characters/CatWalkSheet.png");
-        hitbox = new Rectangle(x,y,spritesheet.getWidth()/10,spritesheet.getHeight()/8);
+        hitbox = new Rectangle(x+spritesheet.getWidth()/30,y,spritesheet.getWidth()/10,spritesheet.getHeight()/8);
         walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth()/5, spritesheet.getHeight()/4);
         ui = new UserInterface(health);
         animUpRight = new Animation(0.2f, walkFrames[3]);

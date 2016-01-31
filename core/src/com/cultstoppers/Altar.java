@@ -28,6 +28,7 @@ public class Altar extends Entity {
         for(int i = 0; i < p.bullets.size(); i++){
             if(p.bullets.get(i).hit(hitbox)){
                 health-=p.bullets.get(i).damage;
+                p.bullets.remove(i);
             }
         }
 
