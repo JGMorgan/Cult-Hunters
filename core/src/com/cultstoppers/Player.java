@@ -28,10 +28,10 @@ public class Player extends Entity{
         health = 8;
         speed = 7;
         batch = new SpriteBatch();
-        sprite = new Texture("roshi.png");
-        spritesheet = new Texture("roshisheet.png");
+        sprite = new Texture("Characters/CatspriteSheetV_01.png");
+        spritesheet = new Texture("Characters/CatspriteSheetV_01.png");
         hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
-        walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth()/7, spritesheet.getHeight()/2);
+        walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth()/2, spritesheet.getHeight());
         ui = new UserInterface(health);
         animRight = new Animation(1f, walkFrames[0]);
         animLeft = new Animation(1f, walkFrames[1]);
