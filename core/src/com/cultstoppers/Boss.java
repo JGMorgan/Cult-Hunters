@@ -20,7 +20,7 @@ public class Boss extends Enemy {
         x = (Gdx.graphics.getWidth()*3)/5;
         y = 0;
         health = 10;
-        speed = 10;
+        speed = 7;
         sprite = new Texture("Characters/CatspriteSheetV_01.png");
         spritesheet = new Texture("Characters/CatWalkSheet.png");
         hitbox = new Rectangle(x,y,sprite.getWidth()/2,sprite.getHeight());
