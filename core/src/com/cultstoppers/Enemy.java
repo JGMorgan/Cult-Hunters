@@ -57,6 +57,9 @@ public class Enemy extends Entity{
         stateTime2 += Gdx.graphics.getDeltaTime();
 
         for(int j=0; j < enemies.size(); j++){
+            /**
+             * Attempt to make enemies not collide with one another
+             */
 //            if (enemies.get(j) != enemies.get(i)) {
 //                if((x < (enemies.get(j).x + sprite.getWidth()) && (y < (enemies.get(j).y + sprite.getHeight()) || (y+sprite.getHeight()) > enemies.get(j).y)))
 //                    x = enemies.get(j).x + (sprite.getWidth() + 1);
