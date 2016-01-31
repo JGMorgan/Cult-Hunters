@@ -11,15 +11,15 @@ public class Altar extends Entity {
 
     public Altar(){
         batch=new SpriteBatch();
-        sprite=new Texture("Ritualshrine.png");
+        sprite=new Texture("Ritualshrine00.png");
         health=100;
         x = 0;
         y = 0;
-        hitbox = new Rectangle(x,y,sprite.getWidth()/5,sprite.getHeight()/5);
+        hitbox = new Rectangle(x,y,sprite.getWidth()/3,sprite.getHeight()/3);
     }
     public void render(){
         batch.begin();
-        batch.draw(sprite, x, y, sprite.getWidth()/5, sprite.getHeight()/5);
+        batch.draw(sprite, x, y, sprite.getWidth()/3, sprite.getHeight()/3);
         batch.end();
     }
 

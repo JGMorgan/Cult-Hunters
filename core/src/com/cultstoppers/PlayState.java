@@ -64,9 +64,7 @@ public class PlayState extends State{
                 }
 
             }
-            p.checkHit(boss);
-            p.move();
-            p.render();
+
             if(mapCount==4){
                 if(altar !=null) {
                     music.pause();
@@ -82,8 +80,10 @@ public class PlayState extends State{
                         bossCount++;
                     }
                 }
-
             }
+            p.checkHit(boss);
+            p.move();
+            p.render();
             batch.begin();
             font.setColor(1,1,1,1);
             batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
