@@ -82,12 +82,19 @@ public class PlayState extends State{
 
 
                             for (int i = 0; i < healthGain; i++) {
-                                if(p.ui.numHealth<9){
+                                if(p.ui.numHealth<8){
+
                                 p.ui.numHealth++;
                                 p.ui.healthBar.add(p.ui.healthIcon);
                                 p.health++;
                                 }
+                                if(p.ui.numHealth>8){
+                                    p.health--;
+                                    p.ui.numHealth--;
+                                    p.ui.healthBar.remove(0);
+                                }
                             }
+                        p.speed=p.speed+2;
 
 
                     }
