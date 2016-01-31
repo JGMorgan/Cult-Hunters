@@ -56,7 +56,7 @@ public class PlayState extends State{
                 }
 
             }
-
+            p.checkHit(boss);
             p.move();
             p.render();
             if(mapCount==4){
