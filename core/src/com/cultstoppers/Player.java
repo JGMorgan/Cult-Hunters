@@ -40,6 +40,7 @@ public class Player extends Entity{
         animDownRight = new Animation(0.2f, walkFrames[2]);
         animDownLeft = new Animation(0.2f, walkFrames[0]);
         bullets = new ArrayList<Weapon>();
+        weaponT = "pistol";
 
     }
     public void move(){
