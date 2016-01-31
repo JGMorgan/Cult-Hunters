@@ -19,16 +19,17 @@ public class Boss extends Enemy {
     public Boss(){
         x = 0;
         y = 0;
+        stateTime=0;
         health = 10;
         speed = 7;
         sprite = new Texture("Characters/CatspriteSheetV_01.png");
-        spritesheet = new Texture("Characters/CatWalkSheet.png");
-        hitbox = new Rectangle(x,y,sprite.getWidth()/2,sprite.getHeight());
-        walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth() / 5, spritesheet.getHeight() / 4);
-        animDownLeft = new Animation(0.2f, walkFrames[0]);
-        animDownRight = new Animation(0.2f, walkFrames[2]);
-        animUpLeft = new Animation(0.2f, walkFrames[1]);
-        animUpRight = new Animation(0.2f, walkFrames[3]);
+        spritesheet = new Texture("Characters/ZombieDogSheet.png");
+        hitbox = new Rectangle(x,y,spritesheet.getWidth()/7,spritesheet.getHeight()/3);
+        walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth() / 7, spritesheet.getHeight() / 3);
+        animDownLeft = new Animation(0.8f, walkFrames[0]);
+        animDownRight = new Animation(0.8f, walkFrames[1]);
+        animUpLeft = new Animation(0.8f, walkFrames[2]);
+        texture = animUpLeft.getKeyFrame(0, true);
     }
 
     public void checkHit(Player p){
@@ -45,33 +46,36 @@ public class Boss extends Enemy {
     public void render(){
 
         stateTime += Gdx.graphics.getDeltaTime();
-        texture = animDownLeft.getKeyFrame(0, true);
+
         batch.begin();
-        batch.draw(texture, x, y, sprite.getWidth()/2, sprite.getHeight());
+        batch.draw(texture, x, y, texture.getRegionWidth(), texture.getRegionHeight());
         batch.end();
     }
 
 
-    public void move(){
+    public void move(Player p){
+        super.move(p);
+        texture = animDownLeft.getKeyFrame(0, true);
+        if(dir == 'u'){
+            texture = animDownLeft.getKeyFrame(stateTime, true);
+        }else if(dir == 'd'){
+            texture = animDownRight.getKeyFrame(stateTime, true);
+        }else if(dir == 'l'){
+            texture = animDownLeft.getKeyFrame(stateTime, true);
+        }else if(dir == 'r'){
+            texture = animDownRight.getKeyFrame(stateTime, true);
+        }
 
-        hitbox.setPosition(x, y);
-
-        if(goingUp)
-            y += speed;
-        else
-            y -= speed;
-
-        checkWall();
     }
 
     public void checkWall(){
-        if((x > Gdx.graphics.getWidth() - sprite.getWidth()/2)){
-            x = Gdx.graphics.getWidth() - sprite.getWidth()/2;
+        if((x > Gdx.graphics.getWidth() - texture.getRegionWidth())){
+            x = Gdx.graphics.getWidth() - texture.getRegionWidth();
         }else if (x < 0){
             x = 0;
         }
-        if(y > Gdx.graphics.getHeight() - sprite.getHeight()){
-            y = Gdx.graphics.getHeight() - sprite.getHeight();
+        if(y > Gdx.graphics.getHeight() - texture.getRegionHeight()){
+            y = Gdx.graphics.getHeight() - texture.getRegionHeight();
             goingUp = false;
         }else if (y < 0){
             y = 0;
