@@ -2,6 +2,8 @@ package com.cultstoppers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.ArrayList;
 
@@ -14,7 +16,8 @@ public class PlayState extends State{
     ArrayList<Enemy> enemies;
     boolean pause = false;
     Music music;
-
+    Texture vignette;
+    SpriteBatch batch;
     public PlayState(){
         p = new Player();
         m = new Map();
@@ -23,10 +26,12 @@ public class PlayState extends State{
             enemies.add(new Enemy(i));
         }
         music = Gdx.audio.newMusic(Gdx.files.internal("audio/ggjbattle.mp3"));
-
+        vignette = new Texture("Vignette.png");
         music.play();
         music.setVolume(.5f);
-        music.setLooping(true);}
+        music.setLooping(true);
+        batch = new SpriteBatch();
+    }
 
     public void render() {
 
@@ -46,5 +51,8 @@ public class PlayState extends State{
 
         p.move();
         p.render();
+        batch.begin();
+        batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        batch.end();
         }
     }
