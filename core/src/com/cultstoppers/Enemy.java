@@ -49,8 +49,6 @@ public class Enemy extends Entity{
         bullets = new ArrayList<Weapon>();
         stateTime = 0f;
         stateTime2 = 0f;
-        sprite = new Texture("megaman.png");
-        hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
     }
 
     public void move(Player p){
@@ -188,13 +186,13 @@ public class Enemy extends Entity{
     }
 
     public void checkWall(){
-        if((x > Gdx.graphics.getWidth() - sprite.getWidth()/4)){
-            x = Gdx.graphics.getWidth() - sprite.getWidth()/4;
+        if((x > Gdx.graphics.getWidth() - spritesheet.getWidth()/8)){
+            x = Gdx.graphics.getWidth() - spritesheet.getWidth()/8;
         }else if (x < 0){
             x = 0;
         }
-        if(y > Gdx.graphics.getHeight() - sprite.getHeight()/4){
-            y = Gdx.graphics.getHeight() - sprite.getHeight()/4;
+        if(y > Gdx.graphics.getHeight() - spritesheet.getHeight()/4){
+            y = Gdx.graphics.getHeight() - spritesheet.getHeight()/4;
         }else if (y < 0){
             y = 0;
         }

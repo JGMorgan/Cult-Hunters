@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class UserInterface{
     int healthX, healthY, numHealth, roomName, roomNum, weaponX,weaponY;
-    Texture healthIcon = new Texture("heart.png");
+    Texture healthIcon = new Texture("UI/Heart-01.png");
     SpriteBatch batch = new SpriteBatch();
     ArrayList<Texture> healthBar = new ArrayList<Texture>();
     Texture shotgunTexture = new Texture("Shotgun.png");
@@ -34,7 +34,7 @@ public class UserInterface{
     public void render() {
         batch.begin();
         for(int i = 0; i < numHealth; i++)
-            batch.draw(healthBar.get(i), (healthX*(i+1)), healthY);
+            batch.draw(healthBar.get(i), (healthX*(i+1)), healthY, healthIcon.getWidth()/20,healthIcon.getHeight()/20);
         batch.end();
         batch.begin();
             batch.draw(weaponTexture, weaponX, weaponY);

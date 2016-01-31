@@ -15,11 +15,11 @@ public class Altar extends Entity {
         health=100;
         x = 0;
         y = 0;
-        hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
+        hitbox = new Rectangle(x,y,sprite.getWidth()/5,sprite.getHeight()/5);
     }
     public void render(){
         batch.begin();
-        batch.draw(sprite, x, y, sprite.getWidth(), sprite.getHeight());
+        batch.draw(sprite, x, y, sprite.getWidth()/5, sprite.getHeight()/5);
         batch.end();
     }
 
