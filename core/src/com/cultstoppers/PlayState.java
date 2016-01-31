@@ -107,7 +107,7 @@ public class PlayState extends State{
             batch.begin();
             font.setColor(1,1,1,1);
             batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-            font.draw(batch, "Boss kill count: " + bossCount, Gdx.graphics.getWidth() * 0.9f, Gdx.graphics.getHeight() - 5);
+            font.draw(batch, bossCount + "/9 Altars Destroyed", Gdx.graphics.getWidth() * 0.9f, Gdx.graphics.getHeight() - 5);
 
             batch.end();
             p.renderUI();
