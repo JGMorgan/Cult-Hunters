@@ -106,7 +106,7 @@ public class PlayState extends State{
                             boss.x = 250;
                             break;
                     }
-                    mapCount=0;
+                    //mapCount=0;
                 }
             }
         }

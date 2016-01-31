@@ -2,6 +2,7 @@ package com.cultstoppers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 
 /**
  * Created by Leon on 1/31/2016.
@@ -12,6 +13,9 @@ public class Altar extends Entity {
         batch=new SpriteBatch();
         sprite=new Texture("altar.png");
         health=100;
+        x = 0;
+        y = 0;
+        hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
     }
     public void render(){
         batch.begin();
