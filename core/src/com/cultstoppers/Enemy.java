@@ -54,7 +54,7 @@ public class Enemy extends Entity{
         hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
     }
 
-    public void move(Player p, ArrayList<Enemy> enemies,int i){
+    public void move(Player p){
         hitbox.setPosition(x,y);
         stateTime += Gdx.graphics.getDeltaTime();
         checkHit(p);
@@ -103,7 +103,7 @@ public class Enemy extends Entity{
             }
 
 
-        }else if(speed == 2 || speed == 1) {
+        }else if(speed == 2 || speed == 1 || speed > 5) {
             if (Math.floor(stateTime) % 2 == 0) {
                 random = r.nextInt(5);
                 stateTime = 1f;

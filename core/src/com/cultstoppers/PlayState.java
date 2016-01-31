@@ -49,7 +49,7 @@ public class PlayState extends State{
                 for (int i = 0; i < enemies.size(); i++) {
                     p.checkHit(enemies.get(i));
                     enemies.get(i).render();
-                    enemies.get(i).move(p, enemies, i);
+                    enemies.get(i).move(p);
                     if (enemies.get(i).isDead()) {
                         enemies.remove(i);
                     }
@@ -63,7 +63,7 @@ public class PlayState extends State{
                 if(altar !=null) {
                     altar.render();
                     boss.render();
-                    boss.move();
+                    boss.move(p);
                     altar.checkHit(p);
                     if (altar.isDead()) {
                         altar = null;
@@ -87,7 +87,7 @@ public class PlayState extends State{
 
                 if(mapCount%4==0){
                     int altarCorner;
-                    altarCorner=altarGen.nextInt(4);
+                    altarCorner=altarGen.nextInt(4)+1;
                     enemies.add(boss);
 
                     altar = new Altar();
