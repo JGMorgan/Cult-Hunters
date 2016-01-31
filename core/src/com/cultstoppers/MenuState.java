@@ -28,20 +28,27 @@ public class MenuState extends State {
     }
 
     public void render() {
-        mainMenuInput();
-        batch.begin();
-        batch.draw(menu, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        batch.end();
-        if(play){
-            //if play or start button is hit then switch to character select screen
-
+        if(play && stateTime <= 4){
+            stateTime+=Gdx.graphics.getDeltaTime();
+            batch.begin();
+            batch.draw(menu, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            batch.end();
+        }else if(stateTime > 4) {
+            confirm = true;
+        }else {
+            mainMenuInput();
+            batch.begin();
+            batch.draw(menu, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            batch.end();
         }
+
     }
 
     public void mainMenuInput(){
         if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){
             play = true;
-            confirm = true;
+            stateTime = 0;
+            menu = new Texture("UI/Howto.png");
         }
     }
     public boolean changeState(){
