@@ -121,25 +121,25 @@ public class Player extends Entity{
 
     public void shotgunMove(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            bullets.add(new Shotgun(x, y, 'u'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'u'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            bullets.add(new Shotgun(x, y, 'd'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'd'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            bullets.add(new Shotgun(x, y, 'l'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'l'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            bullets.add(new Shotgun(x, y, 'r'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'r'));
 
         }
     }
     public void machineMove(){
         if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            bullets.add(new MachineGun(x, y, 'u'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'u'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            bullets.add(new MachineGun(x, y, 'd'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'd'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            bullets.add(new MachineGun(x, y, 'l'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'l'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            bullets.add(new MachineGun(x, y, 'r'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'r'));
         }
     }
     public void pistolMove() {
@@ -148,13 +148,13 @@ public class Player extends Entity{
     public void swordMove(){
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            bullets.add(new Sword(x, y, 'u'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'u'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            bullets.add(new Sword(x, y, 'd'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'd'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            bullets.add(new Sword(x, y, 'l'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'l'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            bullets.add(new Sword(x, y, 'r'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'r'));
         }
     }
 

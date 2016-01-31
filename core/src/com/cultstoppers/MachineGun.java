@@ -22,6 +22,8 @@ public class MachineGun extends Weapon{
         speed = 10;
         damage = 1;
         this.dir = dir;
+        initX = x;
+        initY = y;
         this.x = x;
         this.y = y;
         hitbox = new Rectangle(this.x,this.y,sprite.getWidth(),sprite.getHeight());
