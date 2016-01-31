@@ -58,6 +58,7 @@ public class PlayState extends State{
             p.render();
             if(mapCount==3){
                 boss.render();
+
             }
             batch.begin();
             batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -66,8 +67,11 @@ public class PlayState extends State{
             if ((enemies.size() == 0) && ((p.x + p.texture.getRegionWidth()) >= (Gdx.graphics.getWidth()) || ((p.y + p.texture.getRegionHeight()) >= (Gdx.graphics.getHeight())))) {
 
                 mapCount=mapCount+1;
-                mapFinish(mapCount);
+                mapFinish();
 
+                if(mapCount==4){
+                    mapCount=0;
+                }
             }
         }
         @Override
@@ -75,13 +79,12 @@ public class PlayState extends State{
             return false;
         }
 
-        public void mapFinish(int mapCount2){
+        public void mapFinish(){
 
             m=new Map();
-
-                for(int i = 0; i < 5; i++){
-                    enemies.add(new Enemy(i));
-                }
+            for(int i = 0; i < 5; i++){
+                enemies.add(new Enemy(i));
+            }
 
         }
 
