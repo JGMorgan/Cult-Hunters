@@ -61,7 +61,7 @@ public class PlayState extends State{
             p.renderUI();
             if ((enemies.size() == 0) && ((p.x + p.texture.getRegionWidth()) >= (Gdx.graphics.getWidth()) || ((p.y + p.texture.getRegionHeight()) >= (Gdx.graphics.getHeight())))) {
 
-                mapCount++;
+                mapCount=mapCount+1;
                 mapFinish(mapCount);
 
             }
@@ -74,6 +74,15 @@ public class PlayState extends State{
         public void mapFinish(int mapCount2){
 
             m=new Map();
+            if(mapCount2==3){
+                int makebosscount=0;
+                enemies.add(new Enemy(1));
+                Boss newBoss= new Boss();
+                enemies.get(0).render();
+                newBoss.render();
+                makebosscount++;
+
+            }
 
                 for(int i = 0; i < 5; i++){
                     enemies.add(new Enemy(i));
@@ -87,14 +96,6 @@ public class PlayState extends State{
                     }
                 }
 
-                if(mapCount2==3){
-                    int makebosscount=0;
-
-                    Boss newBoss= new Boss();
-                    newBoss.render();
-                    makebosscount++;
-
-                }
 
         }
 

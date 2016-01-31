@@ -15,7 +15,12 @@ public class Boss extends Enemy {
     public Boss(){
         health = 10;
         sprite = new Texture("Characters/CatspriteSheetV_01.png");
-        hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
+        hitbox = new Rectangle(x,y,sprite.getWidth()/2,sprite.getHeight());
+    }
+    public void render(){
+        batch.begin();
+        batch.draw(sprite, x, y, sprite.getWidth()/2, sprite.getHeight());
+        batch.end();
     }
 
     /*
