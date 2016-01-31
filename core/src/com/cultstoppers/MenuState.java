@@ -16,9 +16,11 @@ public class MenuState extends State {
     SpriteBatch batch;
     boolean play;
     boolean confirm;//when character is confirmed change play state
+    boolean ready;
     public MenuState(){
         play = false;
         confirm = false;
+        ready = false;
         menu = new Texture("TitleScreen.png");
         batch = new SpriteBatch();
         music = Gdx.audio.newMusic(Gdx.files.internal("audio/ggjtitle.mp3"));
@@ -28,15 +30,30 @@ public class MenuState extends State {
     }
 
     public void render() {
-        if(play && stateTime <= 4){
+        if(play){
+            if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){
+                confirm = true;
+                stateTime = 0f;
+                menu = new Texture("UI/Howto.png");
+                play = false;
+
+            }
+            batch.begin();
+            batch.draw(menu, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            batch.end();
+        }else if(confirm && stateTime <= 3) {
             stateTime+=Gdx.graphics.getDeltaTime();
             batch.begin();
             batch.draw(menu, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             batch.end();
-        }else if(stateTime > 4) {
-            confirm = true;
+        }else if(stateTime>3){
+            ready = true;
         }else {
-            mainMenuInput();
+            if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){
+                play = true;
+                stateTime = 0f;
+                menu = new Texture("UI/CharacterSelection-01.png");
+            }
             batch.begin();
             batch.draw(menu, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             batch.end();
@@ -44,15 +61,8 @@ public class MenuState extends State {
 
     }
 
-    public void mainMenuInput(){
-        if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){
-            play = true;
-            stateTime = 0;
-            menu = new Texture("UI/Howto.png");
-        }
-    }
     public boolean changeState(){
-        return confirm;//character confirmed so change state
+        return ready;//character confirmed so change state
     }
 
 }
