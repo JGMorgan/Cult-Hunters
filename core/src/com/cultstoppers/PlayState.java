@@ -13,6 +13,7 @@ import java.util.Random;
  * Created by jose on 1/30/16.
  */
 public class PlayState extends State{
+    int healthMax;
     Random altarGen=new Random();
     Boss boss;
     Altar altar;
@@ -78,7 +79,7 @@ public class PlayState extends State{
                         altar = null;
                         mapCount=0;
                         bossCount++;
-                        int healthMax=8;
+                        healthMax=8;
                         int healthGain=3;
 
 
@@ -96,7 +97,7 @@ public class PlayState extends State{
                                 }
                             }
                         p.speed=p.speed+2;
-                        if(healthMax>5){healthMax--;}
+                        if(healthMax>1){healthMax--;}
 
                     }
                 }
