@@ -67,6 +67,7 @@ public class PlayState extends State{
                     altar.checkHit(p);
                     if (altar.isDead()) {
                         altar = null;
+                        mapCount=0;
                     }
                 }
 
@@ -85,23 +86,23 @@ public class PlayState extends State{
                     altarCorner=altarGen.nextInt(4);
 
                     switch(altarCorner){
-                        case 1:altar.y=200;
-                            altar.x=25;
+                        case 1:altar.y=400;
+                            altar.x=225;
                             boss.y = 250;
                             boss.x = 75;
                             break;
-                        case 2:altar.y=150;
-                            altar.x=25;
+                        case 2:altar.y=350;
+                            altar.x=225;
                             boss.y = 200;
                             boss.x = 75;
                             break;
-                        case 3:altar.x=500;
-                            altar.y=50;
+                        case 3:altar.x=700;
+                            altar.y=250;
                             boss.y = 100;
                             boss.x = 450;
                             break;
-                        case 4:altar.x=200;
-                            altar.y=50;
+                        case 4:altar.x=400;
+                            altar.y=250;
                             boss.y = 100;
                             boss.x = 250;
                             break;
