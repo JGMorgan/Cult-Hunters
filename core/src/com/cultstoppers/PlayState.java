@@ -98,7 +98,7 @@ public class PlayState extends State{
                     p.y = 0;
                 }
                 for(int i = 0; i < p.bullets.size(); i++){
-                    p.bullets.remove(i);
+                    p.bullets.remove(p.bullets.size() -1);
                 }
                 mapCount=mapCount+1;
                 mapFinish();
