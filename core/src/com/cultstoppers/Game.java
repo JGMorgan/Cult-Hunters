@@ -31,6 +31,9 @@ public class Game extends ApplicationAdapter {
                 stateType = 'm';
 			}
 		}
+		if(state.changeState()){
+			state=new MenuState();
+		}else
         state.render();
 	}
 

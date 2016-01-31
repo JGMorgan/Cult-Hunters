@@ -96,7 +96,9 @@ public class PlayState extends State{
         }
         @Override
         public boolean changeState() {
-            return false;
+            if(p.health<=0){
+                return true;
+            }else return false;
         }
 
         public void mapFinish(){

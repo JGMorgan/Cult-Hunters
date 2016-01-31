@@ -200,6 +200,9 @@ public class Player extends Entity{
             if(e.bullets.get(i).hit(hitbox)){
                 e.bullets.remove(i);
                 health--;
+                if(health<=0){
+
+                }
             }
         }
 
