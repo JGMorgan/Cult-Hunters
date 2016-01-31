@@ -16,7 +16,10 @@ public abstract class Weapon {
     int damage;
     Texture sprite;
     TextureRegion texture;
-    Animation anim;
+    Animation animUp;
+    Animation animDown;
+    Animation animLeft;
+    Animation animRight;
     TextureRegion[][] animFrames;
     float stateTime;
     SpriteBatch batch;

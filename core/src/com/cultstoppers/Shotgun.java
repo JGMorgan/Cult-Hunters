@@ -25,8 +25,11 @@ public class Shotgun extends Weapon{
         WeaponType="shotgun";
         batch = new SpriteBatch();
         sprite = new Texture("Fire_Bullet.png");
-        animFrames = TextureRegion.split(sprite, sprite.getWidth() / 2, sprite.getHeight());
-        anim = new Animation(0.2f, animFrames[0]);
+        animFrames = TextureRegion.split(sprite, sprite.getWidth() / 2, sprite.getHeight()/4);
+        animUp = new Animation(0.2f, animFrames[3]);
+        animDown = new Animation(0.2f, animFrames[2]);
+        animLeft = new Animation(0.2f, animFrames[0]);
+        animRight = new Animation(0.2f, animFrames[1]);
         speed = 5;
         damage = 1;
         initX = x;
@@ -42,11 +45,11 @@ public class Shotgun extends Weapon{
         this.y2 = y;
         this.y3 = y;
         this.y4 = y;
-        hitbox = new Rectangle(this.x,this.y,sprite.getWidth()/4,sprite.getHeight()/2);
-        hitbox2 = new Rectangle(this.x1,this.y1,sprite.getWidth()/4,sprite.getHeight()/2);
-        hitbox3 = new Rectangle(this.x2,this.y2,sprite.getWidth()/4,sprite.getHeight()/2);
-        hitbox4 = new Rectangle(this.x3,this.y3,sprite.getWidth()/4,sprite.getHeight()/2);
-        hitbox5 = new Rectangle(this.x4,this.y4,sprite.getWidth()/4,sprite.getHeight()/2);
+        hitbox = new Rectangle(this.x,this.y,sprite.getWidth()/4,sprite.getHeight()/8);
+        hitbox2 = new Rectangle(this.x1,this.y1,sprite.getWidth()/4,sprite.getHeight()/8);
+        hitbox3 = new Rectangle(this.x2,this.y2,sprite.getWidth()/4,sprite.getHeight()/8);
+        hitbox4 = new Rectangle(this.x3,this.y3,sprite.getWidth()/4,sprite.getHeight()/8);
+        hitbox5 = new Rectangle(this.x4,this.y4,sprite.getWidth()/4,sprite.getHeight()/8);
     }
 
     @Override
@@ -63,6 +66,7 @@ public class Shotgun extends Weapon{
         hitbox5.setPosition(x4,y4);
 
         if(dir == 'r') {
+            texture = animRight.getKeyFrame(stateTime, true);
             x += speed;
             x1 += Math.cos(3.1415 / 12) * speed;
             x2 += Math.cos(3.1415 / 6) * speed;
@@ -74,6 +78,7 @@ public class Shotgun extends Weapon{
             y4 += Math.sin(-3.1415 / 6) * speed;
         }
         else if(dir == 'l') {
+            texture = animLeft.getKeyFrame(stateTime, true);
             x -= speed;
             x1 -= Math.cos(3.1415 / 12) * speed;
             x2 -= Math.cos(3.1415 / 6) * speed;
@@ -85,6 +90,7 @@ public class Shotgun extends Weapon{
             y4 += Math.sin(-3.1415 / 6) * speed;
         }
         else if(dir == 'u') {
+            texture = animUp.getKeyFrame(stateTime, true);
             y += speed;
             y1 += Math.cos(3.1415 / 12) * speed;
             y2 += Math.cos(3.1415 / 6) * speed;
@@ -96,6 +102,7 @@ public class Shotgun extends Weapon{
             x4 += Math.sin(-3.1415 / 6) * speed;
         }
         else if(dir == 'd') {
+            texture = animDown.getKeyFrame(stateTime, true);
             y -= speed;
             y1 -= Math.cos(3.1415 / 12) * speed;
             y2 -= Math.cos(3.1415 / 6) * speed;
@@ -106,7 +113,6 @@ public class Shotgun extends Weapon{
             x3 += Math.sin(-3.1415 / 12) * speed;
             x4 += Math.sin(-3.1415 / 6) * speed;
         }
-        texture = anim.getKeyFrame(stateTime, true);
         batch.begin();
         batch.draw(texture, x, y, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
         batch.draw(texture, x1, y1, texture.getRegionWidth()/2, texture.getRegionHeight()/2);

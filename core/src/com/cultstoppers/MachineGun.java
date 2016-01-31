@@ -22,8 +22,11 @@ public class MachineGun extends Weapon{
         random = r.nextInt(3);
         batch = new SpriteBatch();
         sprite = new Texture("Fire_Bullet.png");
-        animFrames = TextureRegion.split(sprite, sprite.getWidth() / 2, sprite.getHeight());
-        anim = new Animation(0.2f, animFrames[0]);
+        animFrames = TextureRegion.split(sprite, sprite.getWidth() / 2, sprite.getHeight() / 4);
+        animUp = new Animation(0.2f, animFrames[3]);
+        animDown = new Animation(0.2f, animFrames[2]);
+        animLeft = new Animation(0.2f, animFrames[0]);
+        animRight = new Animation(0.2f, animFrames[1]);
         speed = 10;
         damage = 1;
         this.dir = dir;
@@ -39,6 +42,7 @@ public class MachineGun extends Weapon{
         stateTime += Gdx.graphics.getDeltaTime();
         hitbox.setPosition(x,y);
         if (dir == 'u'){
+            texture = animUp.getKeyFrame(stateTime, true);
             y+=speed;
             if (random == 0){
                 x-=Math.floor(Math.cos(((11*3.1415)/16)*speed));
@@ -46,6 +50,7 @@ public class MachineGun extends Weapon{
                 x+=Math.floor(Math.cos(((11*3.1415)/16)*speed));
             }
         }else if (dir == 'd'){
+            texture = animDown.getKeyFrame(stateTime, true);
             y-=speed;
             if (random == 0){
                 x-=Math.floor(Math.cos(((11*3.1415)/16)*speed));
@@ -53,6 +58,7 @@ public class MachineGun extends Weapon{
                 x+=Math.floor(Math.cos(((11*3.1415)/16)*speed));
             }
         }else if (dir == 'l'){
+            texture = animLeft.getKeyFrame(stateTime, true);
             x-=speed;
             if (random == 0){
                 y-=Math.floor(Math.cos(((11*3.1415)/16)*speed));
@@ -60,6 +66,7 @@ public class MachineGun extends Weapon{
                 y+=Math.floor(Math.cos(((11*3.1415)/16)*speed));
             }
         }else if (dir == 'r'){
+            texture = animRight.getKeyFrame(stateTime, true);
             x+=speed;
             if (random == 0){
                 y-=Math.floor(Math.cos(((11 * 3.1415) / 16) * speed));
@@ -67,7 +74,7 @@ public class MachineGun extends Weapon{
                 y+=Math.floor(Math.cos(((11 * 3.1415) / 16) * speed));
             }
         }
-        texture = anim.getKeyFrame(stateTime, true);
+
         batch.begin();
         batch.draw(texture, x, y, texture.getRegionWidth()/4, texture.getRegionHeight()/4);
         batch.end();
