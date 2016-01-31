@@ -6,11 +6,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by jose on 1/30/16.
  */
 public class PlayState extends State{
+    Random altarGen=new Random();
     Boss boss = new Boss();
     Altar altar=new Altar();
     ArrayList<Boss> bosslist = new ArrayList<Boss>();
@@ -70,7 +72,23 @@ public class PlayState extends State{
                 mapCount=mapCount+1;
                 mapFinish();
 
-                if(mapCount==4){
+                if(mapCount==4 || mapCount==0){
+                    int altarCorner;
+                    altarCorner=altarGen.nextInt(4);
+                    switch(altarCorner){
+                        case 1:altar.y=350;
+                            altar.x=0;
+                            break;
+                        case 2:altar.y=150;
+                            altar.x=0;
+                            break;
+                        case 3:altar.x=500;
+                            altar.y=0;
+                            break;
+                        case 4:altar.x=200;
+                            altar.y=0;
+                            break;
+                    }
                     mapCount=0;
                 }
             }
