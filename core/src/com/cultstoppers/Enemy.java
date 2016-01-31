@@ -33,7 +33,6 @@ public class Enemy extends Entity{
         bullets = new ArrayList<Weapon>();
         stateTime = 0f;
         stateTime2 = 0f;
-        sprite = new Texture("megaman.png");
         spritesheet = new Texture("Characters/Vampfrog_Sheet.png");
         hitbox = new Rectangle(x,y,spritesheet.getWidth()/4,spritesheet.getHeight()/2);
         walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth() / 2, spritesheet.getHeight());
