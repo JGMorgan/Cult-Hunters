@@ -11,7 +11,8 @@ import java.util.ArrayList;
  * Created by jose on 1/30/16.
  */
 public class PlayState extends State{
-
+    Boss boss;
+    ArrayList<Boss> bosslist = new ArrayList<Boss>();
     Player p;
     Map m;
     ArrayList<Enemy> enemies;
@@ -55,6 +56,8 @@ public class PlayState extends State{
 
             p.move();
             p.render();
+            if(mapCount==3)
+                //boss.render();
             batch.begin();
             batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             batch.end();
@@ -72,15 +75,15 @@ public class PlayState extends State{
         }
 
         public void mapFinish(int mapCount2){
-            ArrayList<Boss> bosslist = new ArrayList<Boss>();
+
             m=new Map();
             if(mapCount2==3){
                 int makebosscount=0;
                 enemies.add(new Enemy(1));
-                Boss newBoss= new Boss();
-                bosslist.add(newBoss);
+                boss = new Boss();
+                //bosslist.add(boss);
                 enemies.get(0).render();
-                bosslist.get(0).render();
+                //bosslist.get(0).render();
                 makebosscount++;
             }
 
@@ -88,13 +91,13 @@ public class PlayState extends State{
                     enemies.add(new Enemy(i));
                 }
 
-                for (int i = 0; i < enemies.size(); i++) {
-                    enemies.get(i).render();
-                    enemies.get(i).move(p, enemies, i);
-                        if (enemies.get(i).isDead()) {
-                            enemies.remove(i);
-                    }
-                }
+//                for (int i = 0; i < enemies.size(); i++) {
+//                    enemies.get(i).render();
+//                    enemies.get(i).move(p, enemies, i);
+//                        if (enemies.get(i).isDead()) {
+//                            enemies.remove(i);
+//                    }
+//                }
 
 
         }

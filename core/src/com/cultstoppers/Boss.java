@@ -13,6 +13,8 @@ public class Boss extends Enemy {
     int BossType;
 
     public Boss(){
+        x = 0;
+        y = 0;
         health = 10;
         sprite = new Texture("Characters/CatspriteSheetV_01.png");
         hitbox = new Rectangle(x,y,sprite.getWidth()/2,sprite.getHeight());
