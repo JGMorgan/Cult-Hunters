@@ -1,5 +1,6 @@
 package com.cultstoppers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -61,5 +62,11 @@ public class MachineGun extends Weapon{
         batch.begin();
         batch.draw(sprite, x, y);
         batch.end();
+    }
+    public boolean isOutOfBounds(){
+        return (x > initX + Gdx.graphics.getWidth()/3) ||
+                (x < initX - Gdx.graphics.getWidth()/3) ||
+                (y > initY + Gdx.graphics.getWidth()/3) ||
+                (y < initY - Gdx.graphics.getWidth()/3);
     }
 }

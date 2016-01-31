@@ -31,7 +31,7 @@ public class Player extends Entity{
         batch = new SpriteBatch();
         sprite = new Texture("Characters/CatspriteSheetV_01.png");
         spritesheet = new Texture("Characters/CatspriteSheetV_01.png");
-        hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
+        hitbox = new Rectangle(x,y,sprite.getWidth()/2,sprite.getHeight());
         walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth()/2, spritesheet.getHeight());
         ui = new UserInterface(health);
         animRight = new Animation(1f, walkFrames[0]);
@@ -107,13 +107,13 @@ public class Player extends Entity{
         ui.render();
     }
     public void checkWall(){
-        if((x > Gdx.graphics.getWidth() - sprite.getWidth()/4)){
-            x = Gdx.graphics.getWidth() - sprite.getWidth()/4;
+        if((x > Gdx.graphics.getWidth() - sprite.getWidth()/2)){
+            x = Gdx.graphics.getWidth() - sprite.getWidth()/2;
         }else if (x < 0){
             x = 0;
         }
-        if(y > Gdx.graphics.getHeight() - sprite.getHeight()/4){
-            y = Gdx.graphics.getHeight() - sprite.getHeight()/4;
+        if(y > Gdx.graphics.getHeight() - sprite.getHeight()){
+            y = Gdx.graphics.getHeight() - sprite.getHeight();
         }else if (y < 0){
             y = 0;
         }

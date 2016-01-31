@@ -42,7 +42,7 @@ public class UserInterface{
     }
 
     public void hit(int health){
-        if(health<=0){return;}
+        if(health<0){return;}
         for(int i = 1; i <= numHealth - health; i++){
             healthBar.remove(healthBar.size()-1);
         }
