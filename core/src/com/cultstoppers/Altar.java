@@ -11,7 +11,7 @@ public class Altar extends Entity {
 
     public Altar(){
         batch=new SpriteBatch();
-        sprite=new Texture("altar.png");
+        sprite=new Texture("Ritualshrine.png");
         health=100;
         x = 0;
         y = 0;
