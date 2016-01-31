@@ -16,7 +16,6 @@ public class Entity {
     TextureRegion[][] walkFrames;
     SpriteBatch batch;
     Rectangle hitbox;
-    Animation animRight;
-    Animation animLeft;
+    Animation animUpRight, animUpLeft, animDownLeft, animDownRight;
     float stateTime;
 }

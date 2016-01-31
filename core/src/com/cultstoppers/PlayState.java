@@ -6,12 +6,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by jose on 1/30/16.
  */
 public class PlayState extends State{
+    Random altarGen=new Random();
     Boss boss = new Boss();
+    Altar altar=new Altar();
     ArrayList<Boss> bosslist = new ArrayList<Boss>();
     Player p;
     Map m;
@@ -59,6 +62,7 @@ public class PlayState extends State{
             if(mapCount==3){
                 boss.render();
                 boss.move();
+                altar.render();
             }
             batch.begin();
             batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -67,8 +71,27 @@ public class PlayState extends State{
             if ((enemies.size() == 0) && ((p.x + p.texture.getRegionWidth()) >= (Gdx.graphics.getWidth()) || ((p.y + p.texture.getRegionHeight()) >= (Gdx.graphics.getHeight())))) {
 
                 mapCount=mapCount+1;
-                mapFinish(mapCount);
+                mapFinish();
 
+                if(mapCount==4 || mapCount==0){
+                    int altarCorner;
+                    altarCorner=altarGen.nextInt(4);
+                    switch(altarCorner){
+                        case 1:altar.y=350;
+                            altar.x=0;
+                            break;
+                        case 2:altar.y=150;
+                            altar.x=0;
+                            break;
+                        case 3:altar.x=500;
+                            altar.y=0;
+                            break;
+                        case 4:altar.x=200;
+                            altar.y=0;
+                            break;
+                    }
+                    mapCount=0;
+                }
             }
         }
         @Override
@@ -76,13 +99,12 @@ public class PlayState extends State{
             return false;
         }
 
-        public void mapFinish(int mapCount2){
+        public void mapFinish(){
 
             m=new Map();
-
-                for(int i = 0; i < 5; i++){
-                    enemies.add(new Enemy(i));
-                }
+            for(int i = 0; i < 5; i++){
+                enemies.add(new Enemy(i));
+            }
 
         }
 
