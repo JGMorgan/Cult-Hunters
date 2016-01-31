@@ -26,15 +26,10 @@ public class PlayState extends State{
         music.setLooping(true);}
 
     public void render() {
-        for (int i = 0; i < enemies.size(); i++) {
-            enemies.get(i).move(p, enemies, i);
-
-            if (enemies.get(i).isDead()) {
-                enemies.remove(i);}
                 if (pause) {
                     music.pause();
                 } else {
-                    for (i = 0; i < enemies.size(); i++) {
+                    for (int i = 0; i < enemies.size(); i++) {
                         enemies.get(i).render();
                         enemies.get(i).move(p, enemies, i);
                         if (enemies.get(i).isDead()) {
@@ -45,6 +40,6 @@ public class PlayState extends State{
                     p.render();
                 }
 
-            }
+
         }
     }
