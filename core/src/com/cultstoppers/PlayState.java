@@ -102,7 +102,7 @@ public class PlayState extends State{
                             }
                         p.speed=p.speed+2;
                         if(healthMax>1){healthMax--;}
-
+                        boss.speed=boss.speed+3;
                     }
                 }
             }
