@@ -12,8 +12,16 @@ import java.util.Random;
  * Created by jose on 1/29/16.
  */
 public class Enemy extends Entity{
+    char dir;
+    ArrayList<Weapon> bullets = new ArrayList<Weapon>();
     Random r;
     int random;
+
+    float stateTime2 = 0;
+    Shotgun enemyShot;
+    Sword enemySword;
+    MachineGun enemyMachineGun;
+    Pistol enemyGun;
     public Enemy(int i){
         r = new Random();
         random = 0;
@@ -46,6 +54,8 @@ public class Enemy extends Entity{
         int tempX =p.x - x;
         int tempY = p.y - y;
 
+        stateTime2 += Gdx.graphics.getDeltaTime();
+
         for(int j=0; j < enemies.size(); j++){
 //            if (enemies.get(j) != enemies.get(i)) {
 //                if((x < (enemies.get(j).x + sprite.getWidth()) && (y < (enemies.get(j).y + sprite.getHeight()) || (y+sprite.getHeight()) > enemies.get(j).y)))
@@ -59,6 +69,7 @@ public class Enemy extends Entity{
 //            }
         }
         if(speed == 3) {
+
             if (tempX > 0) {
                 x += speed;
             } else if (tempX < 0) {
@@ -69,24 +80,32 @@ public class Enemy extends Entity{
             } else if (tempY > 0) {
                 y += speed;
             }
-        }else if(speed == 2 || speed == 1){
-
-            if(Math.floor(stateTime)%2==0){
+        }else if(speed == 2 || speed == 1) {
+            if (Math.floor(stateTime) % 2 == 0) {
                 random = r.nextInt(5);
                 stateTime = 1f;
             }
-            if(random==0){
+            if (random == 0) {
                 //x += speed;
-            }else if(random==1){
+            } else if (random == 1) {
+                dir='a';
+                weaponChoice(speed,dir,stateTime2);
                 x -= speed;
-            }else if(random==2){
+            } else if (random == 2) {
+                dir='w';
+                weaponChoice(speed,dir,stateTime2);
                 y -= speed;
-            }else if(random==3){
+            } else if (random == 3) {
+                dir='s';
+                weaponChoice(speed,dir,stateTime2);
                 y += speed;
-            }else if(random==4){
+            } else if (random == 4) {
+                dir='d';
+                weaponChoice(speed,dir,stateTime2);
                 x += speed;
             }
         }
+
         checkWall();
     }
 
@@ -102,6 +121,7 @@ public class Enemy extends Entity{
         batch.begin();
         batch.draw(sprite, x, y, sprite.getWidth() / 4, sprite.getHeight() / 4);
         batch.end();
+
     }
 
     public boolean isDead(){
@@ -118,6 +138,24 @@ public class Enemy extends Entity{
             y = Gdx.graphics.getHeight() - sprite.getHeight()/4;
         }else if (y < 0){
             y = 0;
+        }
+    }
+
+    public void weaponChoice(int speed,char dir,float stateTime2) {
+
+        if (speed < 3) {
+            bullets.add(new Shotgun(x, y, dir));
+        }
+        int random2 = r.nextInt(5);
+        if((stateTime2%2==0)){
+        for (int i = 0; i < bullets.size(); i++) {
+            bullets.get(0).update();
+            if (bullets.get(0).isOutOfBounds()) {
+                bullets.remove(0);
+            }
+
+        }
+            stateTime2=1f;
         }
     }
 }
