@@ -31,7 +31,7 @@ public class Player extends Entity{
         batch = new SpriteBatch();
         sprite = new Texture("Characters/CatspriteSheetV_01.png");
         spritesheet = new Texture("Characters/CatspriteSheetV_01.png");
-        hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
+        hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
         walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth()/2, spritesheet.getHeight());
         ui = new UserInterface(health);
         animRight = new Animation(1f, walkFrames[0]);
@@ -85,13 +85,10 @@ public class Player extends Entity{
         if(weaponT=="sword"){
             swordMove();
         }
-
-        if(Gdx.input.isKeyJustPressed(Input.Keys.K)) {
-            ui.hit();
-        }
         checkWall();
     }
     public void render(){
+        ui.hit(health);
         stateTime += Gdx.graphics.getDeltaTime();
         texture = animRight.getKeyFrame(stateTime, true);
         for (int i = 0; i < bullets.size(); i++){
@@ -164,6 +161,7 @@ public class Player extends Entity{
     public void checkHit(Enemy e){
         for(int i = 0; i < e.bullets.size(); i++){
             if(e.bullets.get(i).hit(hitbox)){
+                e.bullets.remove(i);
                 health--;
             }
         }

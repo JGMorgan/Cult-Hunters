@@ -37,12 +37,16 @@ public class UserInterface{
             batch.draw(healthBar.get(i), (healthX*(i+1)), healthY);
         batch.end();
         batch.begin();
-            batch.draw(weaponTexture,weaponX,weaponY);
+            batch.draw(weaponTexture, weaponX, weaponY);
         batch.end();
     }
 
-    public void hit(){
-        healthBar.remove(healthBar.size()-1);
-        numHealth--;
+    public void hit(int health){
+        if(health<=0){return;}
+        for(int i = 1; i <= numHealth - health; i++){
+            healthBar.remove(healthBar.size()-1);
+        }
+
+        this.numHealth = health;
     }
 }
