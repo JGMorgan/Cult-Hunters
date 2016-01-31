@@ -74,6 +74,7 @@ public class PlayState extends State{
                     altar.render();
                     boss.render();
                     boss.move(p);
+                    boss.checkHit(p);
                     altar.checkHit(p);
                     if (altar.isDead()) {
                         altar = null;

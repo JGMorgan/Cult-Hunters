@@ -30,6 +30,18 @@ public class Boss extends Enemy {
         animUpLeft = new Animation(0.2f, walkFrames[1]);
         animUpRight = new Animation(0.2f, walkFrames[3]);
     }
+
+    public void checkHit(Player p){
+        hitbox.setPosition(x, y);
+        for(int i = 0; i < p.bullets.size(); i++){
+            if(p.bullets.get(i).hit(hitbox)){
+                health-=p.bullets.get(i).damage;
+                p.bullets.remove(i);
+            }
+        }
+
+    }
+
     public void render(){
 
         stateTime += Gdx.graphics.getDeltaTime();
