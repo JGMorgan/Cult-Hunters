@@ -158,36 +158,36 @@ public class Player extends Entity{
 
     public void shotgunMove(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'u'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'u', 'p'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'd'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'd', 'p'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'l'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'l', 'p'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'r'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'r', 'p'));
 
         }
     }
     public void machineMove(){
         if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'u'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'u', 'p'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'd'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'd', 'p'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'l'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'l', 'p'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'r'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'r', 'p'));
         }
     }
     public void pistolMove() {
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'u'));
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'u', 'p'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'd'));
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'd', 'p'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'l'));
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'l', 'p'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'r'));
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'r', 'p'));
         }
     }
     public void swordMove(){

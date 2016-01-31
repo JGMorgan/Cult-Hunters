@@ -12,10 +12,14 @@ import com.badlogic.gdx.math.Rectangle;
  */
 public class Pistol extends Weapon {
     int speed;
-    public Pistol(int x, int y, char dir){
+    public Pistol(int x, int y, char dir, char entity){
         stateTime=0;
         batch = new SpriteBatch();
-        sprite = new Texture("Fire_Bullet.png");
+        if(entity == 'p') {
+            sprite = new Texture("Fire_Bullet.png");
+        }else{
+            sprite = new Texture("GreenFire_Bullet.png");
+        }
         animFrames = TextureRegion.split(sprite, sprite.getWidth() / 2, sprite.getHeight()/4);
         animUp = new Animation(0.2f, animFrames[3]);
         animDown = new Animation(0.2f, animFrames[2]);

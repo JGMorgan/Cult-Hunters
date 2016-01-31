@@ -20,11 +20,15 @@ public class Shotgun extends Weapon{
 //    Rectangle hitbox4;
 //    Rectangle hitbox5;
 
-    public Shotgun(int x, int y, char dir){
+    public Shotgun(int x, int y, char dir, char entity){
         stateTime=0;
         WeaponType="shotgun";
         batch = new SpriteBatch();
-        sprite = new Texture("Fire_Bullet.png");
+        if(entity == 'p') {
+            sprite = new Texture("Fire_Bullet.png");
+        }else{
+            sprite = new Texture("GreenFire_Bullet.png");
+        }
         animFrames = TextureRegion.split(sprite, sprite.getWidth() / 2, sprite.getHeight()/4);
         animUp = new Animation(0.2f, animFrames[3]);
         animDown = new Animation(0.2f, animFrames[2]);

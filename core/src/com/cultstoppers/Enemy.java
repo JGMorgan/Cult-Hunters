@@ -204,15 +204,15 @@ public class Enemy extends Entity{
             this.stateTime2 = 0f;
             if (speed >= 3) {
                 if(random2%2==0) {
-                    bullets.add(new Shotgun(x+spritesheet.getWidth()/8, y+spritesheet.getHeight()/4, dir));
+                    bullets.add(new Shotgun(x+spritesheet.getWidth()/8, y+spritesheet.getHeight()/4, dir, 'e'));
                 }
             } else if (speed == 2) {
                 if(random2%2==0) {
-                    bullets.add(new Pistol(x+spritesheet.getWidth()/8, y+spritesheet.getHeight()/4, dir));
+                    bullets.add(new Pistol(x+spritesheet.getWidth()/8, y+spritesheet.getHeight()/4, dir, 'e'));
                 }
             } else if (speed == 1) {
                 for(int i = 0; i < random2; i++){
-                    bullets.add(new MachineGun(x+spritesheet.getWidth()/8, y+spritesheet.getHeight()/4,dir));
+                    bullets.add(new MachineGun(x+spritesheet.getWidth()/8, y+spritesheet.getHeight()/4,dir, 'e'));
                 }
             }
         }
