@@ -77,7 +77,11 @@ public class PlayState extends State{
             batch.end();
             p.renderUI();
             if ((enemies.size() == 0 && altar == null) && ((p.x + p.texture.getRegionWidth()/2) >= (Gdx.graphics.getWidth()) || ((p.y + p.texture.getRegionHeight()/2) >= (Gdx.graphics.getHeight())))) {
-
+                if ((p.x + p.texture.getRegionWidth()/2) >= (Gdx.graphics.getWidth())){
+                    p.x = 0;
+                }else{
+                    p.y = 0;
+                }
                 mapCount=mapCount+1;
                 mapFinish();
 

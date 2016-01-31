@@ -2,7 +2,9 @@ package com.cultstoppers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ public class Enemy extends Entity{
     ArrayList<Weapon> bullets;
     Random r;
     int random;
+    TextureRegion texture;
 
     float stateTime2;
     public Enemy(int i){
@@ -25,12 +28,16 @@ public class Enemy extends Entity{
         y = r.nextInt(Gdx.graphics.getHeight());
         health = 1;
         speed = i%3+1;
+        dir = 'u';
         batch = new SpriteBatch();
         bullets = new ArrayList<Weapon>();
         stateTime = 0f;
         stateTime2 = 0f;
         sprite = new Texture("megaman.png");
-        hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
+        spritesheet = new Texture("Characters/Vampfrog_Sheet.png");
+        hitbox = new Rectangle(x,y,spritesheet.getWidth()/4,spritesheet.getHeight()/2);
+        walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth() / 2, spritesheet.getHeight());
+        animUpLeft = new Animation(0.2f, walkFrames[0]);
     }
     public Enemy(){
         r = new Random();
@@ -170,8 +177,9 @@ public class Enemy extends Entity{
 
     }
     public void render(){
+        texture = animUpLeft.getKeyFrame(stateTime, true);
         batch.begin();
-        batch.draw(sprite, x, y, sprite.getWidth() / 4, sprite.getHeight() / 4);
+        batch.draw(texture, x, y, texture.getRegionWidth() / 2, texture.getRegionHeight() / 2);
         batch.end();
 
     }
