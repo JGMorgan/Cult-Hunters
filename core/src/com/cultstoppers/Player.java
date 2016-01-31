@@ -208,7 +208,7 @@ public class Player extends Entity{
             if(e.bullets.get(i).hit(hitbox)){
                 health-=e.bullets.get(i).damage;
                 e.bullets.remove(i);
-                health--;
+                //health--;
             }
         }
 
