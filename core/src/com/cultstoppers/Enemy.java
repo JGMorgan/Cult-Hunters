@@ -73,18 +73,27 @@ public class Enemy extends Entity{
 
             if (tempX > 0) {
                 x += speed;
-                dir='r';
             } else if (tempX < 0) {
                 x -= speed;
-                dir='l';
             }
             if (tempY < 0) {
                 y -= speed;
-                dir='d';
             } else if (tempY > 0) {
                 y += speed;
-                dir='u';
             }
+            if(Math.abs(tempX) > Math.abs(tempY)) {
+                if (tempX > 0)
+                    dir='r';
+                else
+                    dir='l';
+            } else {
+                if (tempY < 0)
+                    dir='d';
+                else if (tempY > 0)
+                    dir='u';
+            }
+
+
         }else if(speed == 2 || speed == 1) {
             if (Math.floor(stateTime) % 2 == 0) {
                 random = r.nextInt(5);
@@ -93,17 +102,57 @@ public class Enemy extends Entity{
             if (random == 0) {
                 //x += speed;
             } else if (random == 1) {
-                dir='l';
                 x -= speed;
+                if(Math.abs(tempX) > Math.abs(tempY)) {
+                    if (tempX > 0)
+                        dir='r';
+                    else
+                        dir='l';
+                } else {
+                    if (tempY < 0)
+                        dir='d';
+                    else if (tempY > 0)
+                        dir='u';
+                }
             } else if (random == 2) {
-                dir='d';
                 y -= speed;
+                if(Math.abs(tempX) > Math.abs(tempY)) {
+                    if (tempX > 0)
+                        dir='r';
+                    else
+                        dir='l';
+                } else {
+                    if (tempY < 0)
+                        dir='d';
+                    else if (tempY > 0)
+                        dir='u';
+                }
             } else if (random == 3) {
-                dir='u';
                 y += speed;
+                if(Math.abs(tempX) > Math.abs(tempY)) {
+                    if (tempX > 0)
+                        dir='r';
+                    else
+                        dir='l';
+                } else {
+                    if (tempY < 0)
+                        dir='d';
+                    else if (tempY > 0)
+                        dir='u';
+                }
             } else if (random == 4) {
-                dir='r';
                 x += speed;
+                if(Math.abs(tempX) > Math.abs(tempY)) {
+                    if (tempX > 0)
+                        dir='r';
+                    else
+                        dir='l';
+                } else {
+                    if (tempY < 0)
+                        dir='d';
+                    else if (tempY > 0)
+                        dir='u';
+                }
             }
         }
         weaponChoice(speed, dir, stateTime2);
