@@ -34,7 +34,7 @@ public class Player extends Entity{
         walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth()/2, spritesheet.getHeight());
         ui = new UserInterface(health);
         animRight = new Animation(1f, walkFrames[0]);
-        animLeft = new Animation(1f, walkFrames[1]);
+        animLeft = new Animation(1f, walkFrames[0]);
         bullets = new ArrayList<Weapon>();
 
     }
