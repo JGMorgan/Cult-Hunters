@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Created by jose on 1/29/16.
  */
 public class Player extends Entity{
-
+    boolean dir[];
     UserInterface ui;
 
     ArrayList<Weapon> bullets;
@@ -24,23 +24,28 @@ public class Player extends Entity{
     String weaponT;
     public Player(){
         canShoot = true;
+        dir = new boolean[]{false, false, false, false};//up down left right
         x = 0;
         y = 0;
         health = 8;
         speed = 7;
         batch = new SpriteBatch();
-        sprite = new Texture("Characters/CatspriteSheetV_01.png");
-        spritesheet = new Texture("Characters/CatspriteSheetV_01.png");
-        hitbox = new Rectangle(x,y,sprite.getWidth()/2,sprite.getHeight());
-        walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth()/2, spritesheet.getHeight());
+        //sprite = new Texture("Characters/CatspriteSheetV_01.png");
+        spritesheet = new Texture("Characters/CatWalkSheet.png");
+        hitbox = new Rectangle(x,y,spritesheet.getWidth()/5,spritesheet.getHeight()/4);
+        walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth()/5, spritesheet.getHeight()/4);
         ui = new UserInterface(health);
-        animRight = new Animation(1f, walkFrames[0]);
-        animLeft = new Animation(1f, walkFrames[0]);
+        animUpRight = new Animation(0.2f, walkFrames[3]);
+        animUpLeft = new Animation(0.2f, walkFrames[1]);
+        animDownRight = new Animation(0.2f, walkFrames[2]);
+        animDownLeft = new Animation(0.2f, walkFrames[0]);
         bullets = new ArrayList<Weapon>();
 
     }
     public void move(){
-        hitbox.setPosition(x,y);
+        hitbox.setPosition(x, y);
+        stateTime += Gdx.graphics.getDeltaTime();
+        texture = animDownLeft.getKeyFrame(0, true);
         if(Gdx.input.isKeyPressed(Input.Keys.NUM_1)){
             ui.weaponTexture=ui.shotgunTexture;
             weaponT="shotgun";
@@ -60,15 +65,43 @@ public class Player extends Entity{
         }
         if(Gdx.input.isKeyPressed(Input.Keys.W)){
             y+=speed;
+            dir[0] = true;
+            dir[1] = false;
+            if(dir[2]){
+                texture = animUpLeft.getKeyFrame(stateTime, true);
+            }else{
+                texture = animUpRight.getKeyFrame(stateTime, true);
+            }
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.S)){
+        else if(Gdx.input.isKeyPressed(Input.Keys.S)){
             y-=speed;
+            dir[1] = true;
+            dir[0] = false;
+            if(dir[2]){
+                texture = animDownLeft.getKeyFrame(stateTime, true);
+            }else{
+                texture = animDownRight.getKeyFrame(stateTime, true);
+            }
         }
         if(Gdx.input.isKeyPressed(Input.Keys.A)){
             x-=speed;
+            dir[2] = true;
+            dir[3] = false;
+            if(dir[0]){
+                texture = animUpLeft.getKeyFrame(stateTime, true);
+            }else {
+                texture = animDownLeft.getKeyFrame(stateTime, true);
+            }
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.D)) {
+        else if(Gdx.input.isKeyPressed(Input.Keys.D)) {
             x += speed;
+            dir[3] = true;
+            dir[2] = false;
+            if(dir[0]){
+                texture = animUpRight.getKeyFrame(stateTime, true);
+            }else {
+                texture = animDownRight.getKeyFrame(stateTime, true);
+            }
         }
 
         if(weaponT=="shotgun") {
@@ -89,8 +122,7 @@ public class Player extends Entity{
     }
     public void render(){
         ui.hit(health);
-        stateTime += Gdx.graphics.getDeltaTime();
-        texture = animRight.getKeyFrame(stateTime, true);
+
         for (int i = 0; i < bullets.size(); i++){
             bullets.get(i).update();
             if(bullets.get(i).isOutOfBounds()){
@@ -107,13 +139,13 @@ public class Player extends Entity{
         ui.render();
     }
     public void checkWall(){
-        if((x > Gdx.graphics.getWidth() - sprite.getWidth()/2)){
-            x = Gdx.graphics.getWidth() - sprite.getWidth()/2;
+        if((x > Gdx.graphics.getWidth() - spritesheet.getWidth()/5)){
+            x = Gdx.graphics.getWidth() - spritesheet.getWidth()/5;
         }else if (x < 0){
             x = 0;
         }
-        if(y > Gdx.graphics.getHeight() - sprite.getHeight()){
-            y = Gdx.graphics.getHeight() - sprite.getHeight();
+        if(y > Gdx.graphics.getHeight() - spritesheet.getHeight()/4){
+            y = Gdx.graphics.getHeight() - spritesheet.getHeight()/4;
         }else if (y < 0){
             y = 0;
         }
@@ -121,25 +153,25 @@ public class Player extends Entity{
 
     public void shotgunMove(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'u'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'u'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'd'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'd'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'l'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'l'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'r'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'r'));
 
         }
     }
     public void machineMove(){
         if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'u'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'u'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'd'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'd'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'l'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'l'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'r'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'r'));
         }
     }
     public void pistolMove() {
@@ -148,13 +180,13 @@ public class Player extends Entity{
     public void swordMove(){
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            bullets.add(new Sword(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'u'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'u'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            bullets.add(new Sword(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'd'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'd'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            bullets.add(new Sword(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'l'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'l'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            bullets.add(new Sword(x+(spritesheet.getWidth()/4), y+(spritesheet.getHeight()/2), 'r'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'r'));
         }
     }
 
