@@ -32,10 +32,13 @@ public class PlayState extends State{
                 enemies.add(new Enemy(i));
             }
             music = Gdx.audio.newMusic(Gdx.files.internal("audio/ggjbattle.mp3"));
-            vignette = new Texture("Vignette.png");
-            music.play();
             music.setVolume(.5f);
             music.setLooping(true);
+            music.play();
+            bossMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/ggjboss.mp3"));
+            bossMusic.setVolume(.5f);
+            bossMusic.setLooping(true);
+            vignette = new Texture("Vignette.png");
             batch = new SpriteBatch();
         }
 
@@ -61,6 +64,8 @@ public class PlayState extends State{
             p.render();
             if(mapCount==4){
                 if(altar !=null) {
+                    music.pause();
+                    bossMusic.play();
                     altar.render();
                     boss.render();
                     boss.move(p);
@@ -125,6 +130,11 @@ public class PlayState extends State{
         }
 
         public void mapFinish(){
+
+            if(bossMusic.isPlaying()){
+                bossMusic.dispose();
+                music.play();
+            }
 
             m=new Map();
             for(int i = 0; i < 5; i++){
