@@ -19,16 +19,18 @@ public class Altar extends Entity {
     }
     public void render(){
         batch.begin();
-        batch.draw(sprite, x+200, y+200, sprite.getWidth(), sprite.getHeight());
+        batch.draw(sprite, x, y, sprite.getWidth(), sprite.getHeight());
         batch.end();
     }
 
     public void checkHit(Player p){
+        hitbox.setPosition(x, y);
         for(int i = 0; i < p.bullets.size(); i++){
             if(p.bullets.get(i).hit(hitbox)){
                 health-=p.bullets.get(i).damage;
             }
         }
+        System.out.println(health);
 
     }
 
