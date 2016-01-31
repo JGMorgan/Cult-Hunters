@@ -74,6 +74,7 @@ public class PlayState extends State{
             if(mapCount==4){
                 if(altar !=null) {
                     music.stop();
+                    altMusic.stop();
                     bossMusic.play();
                     altar.render();
                     boss.render();
