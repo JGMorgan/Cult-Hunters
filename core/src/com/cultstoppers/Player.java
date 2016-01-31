@@ -27,7 +27,7 @@ public class Player extends Entity{
         dir = new boolean[]{false, false, false, false};//up down left right
         x = 0;
         y = 0;
-        health = 20;
+        health = 200;
         speed = 7;
         batch = new SpriteBatch();
         //sprite = new Texture("Characters/CatspriteSheetV_01.png");

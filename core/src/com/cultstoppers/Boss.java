@@ -17,7 +17,7 @@ public class Boss extends Enemy {
     TextureRegion texture;
     boolean goingUp = true;
     public Boss(){
-        x = (Gdx.graphics.getWidth()*3)/5;
+        x = 0;
         y = 0;
         health = 10;
         speed = 7;
