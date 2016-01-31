@@ -15,7 +15,6 @@ public class PlayState extends State{
     Random altarGen=new Random();
     Boss boss = new Boss();
     Altar altar=new Altar();
-    ArrayList<Boss> bosslist = new ArrayList<Boss>();
     Player p;
     Map m;
     ArrayList<Enemy> enemies;
@@ -75,16 +74,16 @@ public class PlayState extends State{
             batch.begin();
             batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             batch.end();
-            p.renderUI();
-            if ((enemies.size() == 0) && ((p.x + p.texture.getRegionWidth()) >= (Gdx.graphics.getWidth()) || ((p.y + p.texture.getRegionHeight()) >= (Gdx.graphics.getHeight())))) {
-
+            p.renderUI();System.out.println(enemies.size());
+            if ((enemies.size() == 0) && ((p.x + p.texture.getRegionWidth()/2) >= (Gdx.graphics.getWidth()) || ((p.y + p.texture.getRegionHeight()/2) >= (Gdx.graphics.getHeight())))) {
+                
                 mapCount=mapCount+1;
                 mapFinish();
 
-                if(mapCount==4 || mapCount==0){
+                if(mapCount%4==0){
                     int altarCorner;
                     altarCorner=altarGen.nextInt(4);
-
+                    enemies.add(boss);
                     switch(altarCorner){
                         case 1:altar.y=400;
                             altar.x=225;
