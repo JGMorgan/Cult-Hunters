@@ -77,7 +77,7 @@ public class PlayState extends State{
                     int altarCorner;
                     altarCorner=altarGen.nextInt(4);
                     switch(altarCorner){
-                        case 1:altar.y=350;
+                        case 1:altar.y=200;
                             altar.x=0;
                             break;
                         case 2:altar.y=150;
