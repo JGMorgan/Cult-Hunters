@@ -39,8 +39,10 @@ public class Enemy extends Entity{
         y = r.nextInt(Gdx.graphics.getHeight());
         health = 1;
         speed = 2;
-        stateTime = 1f;
         batch = new SpriteBatch();
+        bullets = new ArrayList<Weapon>();
+        stateTime = 0f;
+        stateTime2 = 0f;
         sprite = new Texture("megaman.png");
         hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
     }

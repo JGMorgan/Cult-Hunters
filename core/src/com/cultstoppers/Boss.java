@@ -15,10 +15,12 @@ public class Boss extends Enemy {
     Random bossType=new Random();
     int BossType;
     TextureRegion texture;
+    boolean goingUp = true;
     public Boss(){
-        x = 0;
+        x = (Gdx.graphics.getWidth()*3)/5;
         y = 0;
         health = 10;
+        speed = 10;
         sprite = new Texture("Characters/CatspriteSheetV_01.png");
         spritesheet = new Texture("Characters/CatspriteSheetV_01.png");
         hitbox = new Rectangle(x,y,sprite.getWidth()/2,sprite.getHeight());
@@ -35,20 +37,32 @@ public class Boss extends Enemy {
         batch.end();
     }
 
-    /*
+
     public void move(){
-        hitbox.setPosition(x,y);
-        BossType=bossType.nextInt(4);
-        switch(BossType){
-            case 1: bullets.add(new Shotgun(x,y,dir));
-                break;
-            case 2:bullets.add(new Sword(x,y,dir));
-                break;
-            case 3:bullets.add(new MachineGun(x,y,dir));
-                break;
-            case 4:bullets.add(new Pistol(x,y,dir));
-                break;
+
+        hitbox.setPosition(x, y);
+
+        if(goingUp)
+            y += speed;
+        else
+            y -= speed;
+
+        checkWall();
+    }
+
+    public void checkWall(){
+        if((x > Gdx.graphics.getWidth() - sprite.getWidth()/2)){
+            x = Gdx.graphics.getWidth() - sprite.getWidth()/2;
+        }else if (x < 0){
+            x = 0;
+        }
+        if(y > Gdx.graphics.getHeight() - sprite.getHeight()){
+            y = Gdx.graphics.getHeight() - sprite.getHeight();
+            goingUp = false;
+        }else if (y < 0){
+            y = 0;
+            goingUp = true;
         }
     }
-    */
+
 }

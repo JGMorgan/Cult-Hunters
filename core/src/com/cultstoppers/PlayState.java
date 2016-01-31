@@ -58,6 +58,7 @@ public class PlayState extends State{
             p.render();
             if(mapCount==3){
                 boss.render();
+                boss.move();
             }
             batch.begin();
             batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
