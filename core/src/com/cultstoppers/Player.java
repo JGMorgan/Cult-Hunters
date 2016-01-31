@@ -27,7 +27,7 @@ public class Player extends Entity{
         dir = new boolean[]{false, false, false, false};//up down left right
         x = 0;
         y = 0;
-        health = 200;
+        health = 10;
         speed = 7;
         batch = new SpriteBatch();
         //sprite = new Texture("Characters/CatspriteSheetV_01.png");
@@ -180,7 +180,15 @@ public class Player extends Entity{
         }
     }
     public void pistolMove() {
-
+        if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'u'));
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'd'));
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'l'));
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'r'));
+        }
     }
     public void swordMove(){
 
