@@ -15,6 +15,10 @@ public abstract class Weapon {
     Texture sprite;
     SpriteBatch batch;
     Rectangle hitbox;
+    Rectangle hitbox2;
+    Rectangle hitbox3;
+    Rectangle hitbox4;
+    Rectangle hitbox5;
     String WeaponType;
     public abstract void update();
 
@@ -26,7 +30,14 @@ public abstract class Weapon {
     }
 
     public boolean hit(Rectangle hitbox){
-        return hitbox.overlaps(this.hitbox);
+        if((this.hitbox2 != null||this.hitbox3!= null||this.hitbox4!= null||this.hitbox5!= null)){
+        if((hitbox.overlaps(this.hitbox)) || (hitbox.overlaps(this.hitbox2)) || (hitbox.overlaps(this.hitbox3)) || (hitbox.overlaps(this.hitbox4)) || (hitbox.overlaps(this.hitbox5))){
+            return true;
+        }else return false;
+        }else if(hitbox.overlaps(this.hitbox)){
+            return true;
+        }
+        else return false;
     }
 
 }

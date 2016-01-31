@@ -13,14 +13,13 @@ public class Shotgun extends Weapon{
     int speed;
     int x1,x2,x3,x4;
     int y1,y2,y3,y4;
-
+//    Rectangle hitbox2;
+//    Rectangle hitbox3;
+//    Rectangle hitbox4;
+//    Rectangle hitbox5;
 
     public Shotgun(int x, int y, char dir){
         WeaponType="shotgun";
-        Rectangle hitbox2;
-        Rectangle hitbox3;
-        Rectangle hitbox4;
-        Rectangle hitbox5;
         batch = new SpriteBatch();
         sprite = new Texture("bullet.png");
         speed = 5;
@@ -48,6 +47,15 @@ public class Shotgun extends Weapon{
     @Override
     public void update() {
         hitbox.setPosition(x,y);
+
+        hitbox2.setPosition(x1,y1);
+
+        hitbox3.setPosition(x2,y2);
+
+        hitbox4.setPosition(x3,y3);
+
+        hitbox5.setPosition(x4,y4);
+
         if(dir == 'r') {
             x += speed;
             x1 += Math.cos(3.1415 / 12) * speed;
