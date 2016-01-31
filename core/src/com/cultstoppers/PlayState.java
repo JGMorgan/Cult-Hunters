@@ -10,12 +10,14 @@ import java.util.ArrayList;
  */
 public class PlayState extends State{
     Player p;
+    Map m;
     ArrayList<Enemy> enemies;
     boolean pause = false;
     Music music;
 
     public PlayState(){
         p = new Player();
+        m = new Map();
         enemies = new ArrayList<Enemy>();
         for(int i = 0; i < 5; i++){
             enemies.add(new Enemy(i));
@@ -27,9 +29,11 @@ public class PlayState extends State{
         music.setLooping(true);}
 
     public void render() {
+
         if (pause) {
             music.pause();
         } else {
+            m.render();
             for (int i = 0; i < enemies.size(); i++) {
                 enemies.get(i).render();
                 enemies.get(i).move(p, enemies, i);
@@ -39,6 +43,7 @@ public class PlayState extends State{
 
             }
         }
+
         p.move();
         p.render();
         }

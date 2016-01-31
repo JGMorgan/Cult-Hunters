@@ -1,5 +1,6 @@
 package com.cultstoppers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,26 +12,35 @@ import java.util.Random;
  */
 public class Map {
     Texture tilesheet;
-    TextureRegion[] tiles;
+    TextureRegion[][] tiles;
     SpriteBatch batch;
     Random r;
     public Map(){
         r = new Random();
-        tilesheet = new Texture("GroundTileStripArray.png");
-        TextureRegion tmp [][] = TextureRegion.split(tilesheet, tilesheet.getWidth()/7, 1);
-        for(int i = 0; i < 7; i++){
-            tiles[i]=tmp[i][0];
-        }
+        batch = new SpriteBatch();
+        tiles = new TextureRegion [4][3];
+        tilesheet = new Texture(Gdx.files.internal("Ground_Tiles/GroundTileStripArray.png"));
+        TextureRegion tmp [][] = TextureRegion.split(tilesheet, tilesheet.getWidth()/7, tilesheet.getHeight());
         for(int i = 0; i < 4; i++){
-            for(int j = 0; j < 3; j++){
+            for (int j = 0; j < 3; j++){
+                if(tiles[i][j]==null) {
+                    int rand = r.nextInt(7);
+                    tiles[i][j] = tmp[0][rand];
+                    //if (rand == 0) {
+                        //if(i==0){
 
+                      //  }
+                    //}
+                }
             }
         }
     }
-    public void render(){
+    public void render() {
         batch.begin();
         for(int i = 0; i < tiles.length; i++) {
-            batch.draw(tiles[i], ((i)+1),(i+1));
+            for(int j = 0; j < tiles[i].length; j++){
+                batch.draw(tiles[i][j], i * (Gdx.graphics.getWidth() / 4), j * (Gdx.graphics.getHeight() / 3), Gdx.graphics.getWidth() / 4, Gdx.graphics.getHeight()/3);
+            }
         }
         batch.end();
     }
