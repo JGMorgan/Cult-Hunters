@@ -52,9 +52,9 @@ public class Shotgun extends Weapon{
 
         hitbox3.setPosition(x2,y2);
 
-        hitbox4.setPosition(x3,y3);
+       // hitbox4.setPosition(x3,y3);
 
-        hitbox5.setPosition(x4,y4);
+      //  hitbox5.setPosition(x4,y4);
 
         if(dir == 'r') {
             x += speed;
@@ -104,8 +104,8 @@ public class Shotgun extends Weapon{
         batch.draw(sprite, x, y);
         batch.draw(sprite, x1, y1);
         batch.draw(sprite, x2, y2);
-        batch.draw(sprite, x3, y3);
-        batch.draw(sprite, x4, y4);
+        //batch.draw(sprite, x3, y3);
+       // batch.draw(sprite, x4, y4);
         batch.end();
     }
 
