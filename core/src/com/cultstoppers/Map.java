@@ -19,7 +19,7 @@ public class Map {
         r = new Random();
         batch = new SpriteBatch();
         tiles = new TextureRegion [4][3];
-        tilesheet = new Texture(Gdx.files.internal("Ground_Tiles/GroundTileStripArray.png"));
+        tilesheet = new Texture(("Ground_Tiles/GroundTileStripArray.png"));
         TextureRegion tmp [][] = TextureRegion.split(tilesheet, tilesheet.getWidth()/7, tilesheet.getHeight());
         int rand1 = r.nextInt(4);
         int rand2 = r.nextInt(3);
