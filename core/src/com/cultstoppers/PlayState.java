@@ -3,6 +3,7 @@ package com.cultstoppers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.ArrayList;
@@ -16,15 +17,18 @@ public class PlayState extends State{
     Boss boss;
     Altar altar;
     Player p;
+    int bossCount = 0;
     Map m;
     ArrayList<Enemy> enemies;
     boolean pause = false;
     Texture vignette;
     SpriteBatch batch;
+    private BitmapFont font;
     int mapCount=0;
 
         public PlayState(){
             p = new Player();
+            font = new BitmapFont();
             m = new Map();
             boss = new Boss();
             enemies = new ArrayList<Enemy>();
@@ -73,12 +77,16 @@ public class PlayState extends State{
                     if (altar.isDead()) {
                         altar = null;
                         mapCount=0;
+                        bossCount++;
                     }
                 }
 
             }
             batch.begin();
+            font.setColor(1,1,1,1);
             batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            font.draw(batch, "Boss kill count: " + bossCount, Gdx.graphics.getWidth() * 0.9f, Gdx.graphics.getHeight() );
+
             batch.end();
             p.renderUI();
             if ((enemies.size() == 0 && altar == null) && ((p.x + p.texture.getRegionWidth()/2) >= (Gdx.graphics.getWidth()) || ((p.y + p.texture.getRegionHeight()/2) >= (Gdx.graphics.getHeight())))) {
