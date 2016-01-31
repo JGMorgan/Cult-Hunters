@@ -128,7 +128,9 @@ public class Player extends Entity{
     }
     public void render(){
         ui.hit(health);
-
+        batch.begin();
+        batch.draw(texture, x, y, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
+        batch.end();
         for (int i = 0; i < bullets.size(); i++){
             bullets.get(i).update();
             if(bullets.get(i).isOutOfBounds()){
@@ -136,9 +138,7 @@ public class Player extends Entity{
             }
         }
 
-        batch.begin();
-        batch.draw(texture, x, y, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
-        batch.end();
+
 
     }
     public void renderUI(){
