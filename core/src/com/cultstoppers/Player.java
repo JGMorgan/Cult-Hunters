@@ -27,12 +27,12 @@ public class Player extends Entity{
         dir = new boolean[]{false, false, false, false};//up down left right
         x = 0;
         y = 0;
-        health = 200;
+        health = 20;
         speed = 7;
         batch = new SpriteBatch();
         //sprite = new Texture("Characters/CatspriteSheetV_01.png");
         spritesheet = new Texture("Characters/CatWalkSheet.png");
-        hitbox = new Rectangle(x,y,spritesheet.getWidth()/5,spritesheet.getHeight()/4);
+        hitbox = new Rectangle(x,y,spritesheet.getWidth()/10,spritesheet.getHeight()/8);
         walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth()/5, spritesheet.getHeight()/4);
         ui = new UserInterface(health);
         animUpRight = new Animation(0.2f, walkFrames[3]);
@@ -136,7 +136,7 @@ public class Player extends Entity{
         }
 
         batch.begin();
-        batch.draw(texture, x, y);//, sprite.getWidth()/4, sprite.getHeight()/4);
+        batch.draw(texture, x, y, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
         batch.end();
 
     }
@@ -144,13 +144,13 @@ public class Player extends Entity{
         ui.render();
     }
     public void checkWall(){
-        if((x > Gdx.graphics.getWidth() - spritesheet.getWidth()/5)){
-            x = Gdx.graphics.getWidth() - spritesheet.getWidth()/5;
+        if((x > Gdx.graphics.getWidth() - spritesheet.getWidth()/10)){
+            x = Gdx.graphics.getWidth() - spritesheet.getWidth()/10;
         }else if (x < 0){
             x = 0;
         }
-        if(y > Gdx.graphics.getHeight() - spritesheet.getHeight()/4){
-            y = Gdx.graphics.getHeight() - spritesheet.getHeight()/4;
+        if(y > Gdx.graphics.getHeight() - spritesheet.getHeight()/8){
+            y = Gdx.graphics.getHeight() - spritesheet.getHeight()/8;
         }else if (y < 0){
             y = 0;
         }
@@ -158,25 +158,25 @@ public class Player extends Entity{
 
     public void shotgunMove(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'u'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'u'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'd'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'd'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'l'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'l'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            bullets.add(new Shotgun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'r'));
+            bullets.add(new Shotgun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'r'));
 
         }
     }
     public void machineMove(){
         if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'u'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'u'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'd'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'd'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'l'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'l'));
         }else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            bullets.add(new MachineGun(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'r'));
+            bullets.add(new MachineGun(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'r'));
         }
     }
     public void pistolMove() {
@@ -185,13 +185,13 @@ public class Player extends Entity{
     public void swordMove(){
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            bullets.add(new Sword(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'u'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'u'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            bullets.add(new Sword(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'd'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'd'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            bullets.add(new Sword(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'l'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'l'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            bullets.add(new Sword(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'r'));
+            bullets.add(new Sword(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'r'));
         }
     }
 

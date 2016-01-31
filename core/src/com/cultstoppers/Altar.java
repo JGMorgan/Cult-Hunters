@@ -30,7 +30,6 @@ public class Altar extends Entity {
                 health-=p.bullets.get(i).damage;
             }
         }
-        System.out.println(health);
 
     }
 

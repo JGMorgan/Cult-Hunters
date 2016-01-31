@@ -86,23 +86,23 @@ public class PlayState extends State{
 
                     switch(altarCorner){
                         case 1:altar.y=200;
-                            altar.x=0;
+                            altar.x=25;
                             boss.y = 250;
                             boss.x = 75;
                             break;
                         case 2:altar.y=150;
-                            altar.x=0;
+                            altar.x=25;
                             boss.y = 200;
                             boss.x = 75;
                             break;
                         case 3:altar.x=500;
-                            altar.y=0;
-                            boss.y = 50;
+                            altar.y=50;
+                            boss.y = 100;
                             boss.x = 450;
                             break;
                         case 4:altar.x=200;
-                            altar.y=0;
-                            boss.y = 50;
+                            altar.y=50;
+                            boss.y = 100;
                             boss.x = 250;
                             break;
                     }
