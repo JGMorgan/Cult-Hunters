@@ -91,19 +91,19 @@ public class Enemy extends Entity{
             if (random == 0) {
                 //x += speed;
             } else if (random == 1) {
-                dir='a';
+                dir='l';
                 weaponChoice(speed,dir,stateTime2);
                 x -= speed;
             } else if (random == 2) {
-                dir='w';
+                dir='u';
                 weaponChoice(speed,dir,stateTime2);
                 y -= speed;
             } else if (random == 3) {
-                dir='s';
+                dir='d';
                 weaponChoice(speed,dir,stateTime2);
                 y += speed;
             } else if (random == 4) {
-                dir='d';
+                dir='r';
                 weaponChoice(speed,dir,stateTime2);
                 x += speed;
             }
