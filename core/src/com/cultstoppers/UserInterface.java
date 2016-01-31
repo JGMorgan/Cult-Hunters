@@ -13,7 +13,7 @@ public class UserInterface{
     SpriteBatch batch = new SpriteBatch();
     ArrayList<Texture> healthBar = new ArrayList<Texture>();
     Texture shotgunTexture = new Texture("Shotgun.png");
-    Texture swordTexture = new Texture("swords.png");
+    Texture swordTexture = new Texture("ScratchAction.png");
     Texture machineTexture = new Texture("machine.png");
     Texture pistolTexture = new Texture("gun.png");
     Texture weaponTexture=new Texture("blank.png");
@@ -24,7 +24,7 @@ public class UserInterface{
         healthX = Gdx.graphics.getWidth() / 30;
         healthY = Gdx.graphics.getHeight() - 50;
         weaponX = Gdx.graphics.getWidth() / 40;
-        weaponY = Gdx.graphics.getHeight() - 60 - healthX;
+        weaponY = Gdx.graphics.getHeight() - 100 - healthX;
         for(int i = 0; i < numHealth; i++) {
             healthBar.add(healthIcon);
 
@@ -37,7 +37,7 @@ public class UserInterface{
             batch.draw(healthBar.get(i), (healthX*(i+1)), healthY, healthIcon.getWidth()/20,healthIcon.getHeight()/20);
         batch.end();
         batch.begin();
-            batch.draw(weaponTexture, weaponX, weaponY);
+            batch.draw(weaponTexture, weaponX, weaponY,machineTexture.getWidth()/6, machineTexture.getHeight()/4);
         batch.end();
     }
 
