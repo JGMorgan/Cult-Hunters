@@ -22,9 +22,11 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		if(state.changeState()){
 			if(stateType == 'm'){
+                state.music.dispose();
 				state = new PlayState();
                 stateType = 'p';
 			}else {
+                state.music.dispose();
 				state = new MenuState();
                 stateType = 'm';
 			}

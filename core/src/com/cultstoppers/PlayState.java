@@ -15,7 +15,6 @@ public class PlayState extends State{
     Map m;
     ArrayList<Enemy> enemies;
     boolean pause = false;
-    Music music;
     Texture vignette;
     SpriteBatch batch;
     public PlayState(){

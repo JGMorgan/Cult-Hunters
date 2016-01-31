@@ -15,7 +15,6 @@ public class MenuState extends State {
     SpriteBatch batch;
     boolean play;
     boolean confirm;//when character is confirmed change play state
-    Music music;
     public MenuState(){
         play = false;
         confirm = false;
