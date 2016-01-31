@@ -22,7 +22,7 @@ public class Boss extends Enemy {
         health = 10;
         speed = 7;
         sprite = new Texture("Characters/CatspriteSheetV_01.png");
-        spritesheet = new Texture("CatWalkSheet.png");
+        spritesheet = new Texture("Characters/CatWalkSheet.png");
         hitbox = new Rectangle(x,y,sprite.getWidth()/2,sprite.getHeight());
         walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth() / 5, spritesheet.getHeight() / 4);
         animDownLeft = new Animation(0.2f, walkFrames[0]);

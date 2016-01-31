@@ -85,7 +85,7 @@ public class PlayState extends State{
             batch.begin();
             font.setColor(1,1,1,1);
             batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-            font.draw(batch, "Boss kill count: " + bossCount, Gdx.graphics.getWidth() * 0.9f, Gdx.graphics.getHeight() -5);
+            font.draw(batch, "Boss kill count: " + bossCount, Gdx.graphics.getWidth() * 0.9f, Gdx.graphics.getHeight() - 5);
 
             batch.end();
             p.renderUI();
@@ -127,6 +127,11 @@ public class PlayState extends State{
                             break;
                     }
                     //mapCount=0;
+                } else {
+                    if(bossMusic.isPlaying()){
+                        bossMusic.dispose();
+                        music.play();
+                    }
                 }
             }
         }
@@ -139,10 +144,7 @@ public class PlayState extends State{
 
         public void mapFinish(){
 
-            if(bossMusic.isPlaying()){
-                bossMusic.dispose();
-                music.play();
-            }
+
 
             m=new Map();
             for(int i = 0; i < 5; i++){
