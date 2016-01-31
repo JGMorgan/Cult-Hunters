@@ -12,7 +12,7 @@ public class Pistol extends Weapon {
     public Pistol(int x, int y, char dir){
         batch = new SpriteBatch();
         sprite = new Texture("bullet.png");
-        speed = 10;
+        speed = 5;
         damage = 1;
         this.dir = dir;
         this.x = x;

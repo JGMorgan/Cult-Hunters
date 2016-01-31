@@ -23,7 +23,7 @@ public class Shotgun extends Weapon{
         Rectangle hitbox5;
         batch = new SpriteBatch();
         sprite = new Texture("bullet.png");
-        speed = 10;
+        speed = 5;
         damage = 1;
         initX = x;
         initY = y;

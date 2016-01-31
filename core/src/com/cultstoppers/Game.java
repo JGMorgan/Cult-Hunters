@@ -9,15 +9,28 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
 	State state;
+	char stateType;
 	@Override
 	public void create () {
-        state = new PlayState();
+        state = new MenuState();
+		stateType = 'm';
     }
 
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		if(state.changeState()){
+			if(stateType == 'm'){
+                state.music.dispose();
+				state = new PlayState();
+                stateType = 'p';
+			}else {
+                state.music.dispose();
+				state = new MenuState();
+                stateType = 'm';
+			}
+		}
         state.render();
 	}
 

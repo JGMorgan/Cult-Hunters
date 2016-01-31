@@ -18,7 +18,7 @@ public class MachineGun extends Weapon{
         random = r.nextInt(3);
         batch = new SpriteBatch();
         sprite = new Texture("bullet.png");
-        speed = 10;
+        speed = 6;
         damage = 1;
         this.dir = dir;
         this.x = x;
