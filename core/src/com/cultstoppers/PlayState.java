@@ -27,6 +27,7 @@ public class PlayState extends State{
     private BitmapFont font;
     int mapCount=0;
     int healthcount;
+    int musicShuffle;
         public PlayState(){
             p = new Player();
             font = new BitmapFont();
@@ -40,6 +41,10 @@ public class PlayState extends State{
             music.setVolume(.5f);
             music.setLooping(true);
             music.play();
+            musicShuffle=1;
+            altMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/ggjspoopy.mp3"));
+            altMusic.setVolume(.5f);
+            altMusic.setLooping(true);
             bossMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/ggjboss.mp3"));
             bossMusic.setVolume(.5f);
             bossMusic.setLooping(true);
@@ -68,7 +73,7 @@ public class PlayState extends State{
 
             if(mapCount==4){
                 if(altar !=null) {
-                    music.pause();
+                    music.stop();
                     bossMusic.play();
                     altar.render();
                     boss.render();
@@ -161,7 +166,15 @@ public class PlayState extends State{
                 } else {
                     if(bossMusic.isPlaying()){
                         bossMusic.dispose();
-                        music.play();
+                        if (musicShuffle == 1) {
+                            altMusic.play();
+                            music.dispose();
+                            musicShuffle=0;
+                        }
+                        else {
+                            music.play();
+                            altMusic.dispose();
+                        }
                     }
                 }
             }
@@ -169,6 +182,8 @@ public class PlayState extends State{
         @Override
         public boolean changeState() {
             if(p.health<=0){
+                bossMusic.stop();
+                altMusic.stop();
                 return true;
             }else return false;
         }

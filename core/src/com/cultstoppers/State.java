@@ -6,7 +6,7 @@ import com.badlogic.gdx.audio.Music;
  * Created by jose on 1/30/16.
  */
 public abstract class State {
-    Music music, bossMusic;
+    Music music, bossMusic, altMusic;
     public abstract void render();
     public abstract boolean changeState();
 }
