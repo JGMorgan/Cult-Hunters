@@ -13,15 +13,11 @@ import java.util.Random;
  */
 public class Enemy extends Entity{
     char dir;
-    ArrayList<Weapon> bullets = new ArrayList<Weapon>();
+    ArrayList<Weapon> bullets;
     Random r;
     int random;
 
-    float stateTime2 = 0;
-    Shotgun enemyShot;
-    Sword enemySword;
-    MachineGun enemyMachineGun;
-    Pistol enemyGun;
+    float stateTime2;
     public Enemy(int i){
         r = new Random();
         random = 0;
@@ -30,7 +26,9 @@ public class Enemy extends Entity{
         health = 1;
         speed = i%3+1;
         batch = new SpriteBatch();
+        bullets = new ArrayList<Weapon>();
         stateTime = 0f;
+        stateTime2 = 0f;
         sprite = new Texture("megaman.png");
         hitbox = new Rectangle(x,y,sprite.getWidth()/4,sprite.getHeight()/4);
     }
@@ -56,7 +54,7 @@ public class Enemy extends Entity{
 
         stateTime2 += Gdx.graphics.getDeltaTime();
 
-        for(int j=0; j < enemies.size(); j++){
+//        for(int j=0; j < enemies.size(); j++){
             /**
              * Attempt to make enemies not collide with one another
              */
@@ -70,18 +68,22 @@ public class Enemy extends Entity{
 //                else if (((y+sprite.getHeight()) > enemies.get(j).y) && (x < (enemies.get(j).x + sprite.getWidth()) || x > enemies.get(j).x))
 //                    y = y-2;
 //            }
-        }
+ //       }
         if(speed == 3) {
 
             if (tempX > 0) {
                 x += speed;
+                dir='r';
             } else if (tempX < 0) {
                 x -= speed;
+                dir='l';
             }
             if (tempY < 0) {
                 y -= speed;
+                dir='d';
             } else if (tempY > 0) {
                 y += speed;
+                dir='u';
             }
         }else if(speed == 2 || speed == 1) {
             if (Math.floor(stateTime) % 2 == 0) {
@@ -92,23 +94,19 @@ public class Enemy extends Entity{
                 //x += speed;
             } else if (random == 1) {
                 dir='l';
-                weaponChoice(speed,dir,stateTime2);
                 x -= speed;
             } else if (random == 2) {
-                dir='u';
-                weaponChoice(speed,dir,stateTime2);
+                dir='d';
                 y -= speed;
             } else if (random == 3) {
-                dir='d';
-                weaponChoice(speed,dir,stateTime2);
+                dir='u';
                 y += speed;
             } else if (random == 4) {
                 dir='r';
-                weaponChoice(speed,dir,stateTime2);
                 x += speed;
             }
         }
-
+        weaponChoice(speed, dir, stateTime2);
         checkWall();
     }
 
@@ -145,20 +143,30 @@ public class Enemy extends Entity{
     }
 
     public void weaponChoice(int speed,char dir,float stateTime2) {
-
-        if (speed < 3) {
-            bullets.add(new Shotgun(x, y, dir));
+        if(stateTime2 > 1) {
+            int random2 = r.nextInt(5);
+            this.stateTime2 = 0f;
+            if (speed == 3) {
+                if(random2%2==0) {
+                    bullets.add(new Shotgun(x, y, dir));
+                }
+            } else if (speed == 2) {
+                if(random2%2==0) {
+                    bullets.add(new Pistol(x, y, dir));
+                }
+            } else if (speed == 1) {
+                for(int i = 0; i < random2; i++){
+                    bullets.add(new MachineGun(x,y,dir));
+                }
+            }
         }
-        int random2 = r.nextInt(5);
-        if((stateTime2%2==0)){
         for (int i = 0; i < bullets.size(); i++) {
-            bullets.get(0).update();
-            if (bullets.get(0).isOutOfBounds()) {
-                bullets.remove(0);
+            bullets.get(i).update();
+            if (bullets.get(i).isOutOfBounds()) {
+                bullets.remove(i);
             }
 
         }
-            stateTime2=1f;
-        }
+
     }
 }
