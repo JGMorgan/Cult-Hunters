@@ -14,7 +14,7 @@ public class Sword extends Weapon {
         batch = new SpriteBatch();
         speed=10;
         sprite = new Texture("lightsaber.png");
-        damage=9001;
+        damage=15;
         initX = x;
         initY = y;
         this.x=x;
