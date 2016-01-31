@@ -186,13 +186,13 @@ public class Enemy extends Entity{
     }
 
     public void checkWall(){
-        if((x > Gdx.graphics.getWidth() - spritesheet.getWidth()/8)){
-            x = Gdx.graphics.getWidth() - spritesheet.getWidth()/8;
+        if((x > Gdx.graphics.getWidth() - spritesheet.getWidth()/4)){
+            x = Gdx.graphics.getWidth() - spritesheet.getWidth()/4;
         }else if (x < 0){
             x = 0;
         }
-        if(y > Gdx.graphics.getHeight() - spritesheet.getHeight()/4){
-            y = Gdx.graphics.getHeight() - spritesheet.getHeight()/4;
+        if(y > Gdx.graphics.getHeight() - spritesheet.getHeight()/2){
+            y = Gdx.graphics.getHeight() - spritesheet.getHeight()/2;
         }else if (y < 0){
             y = 0;
         }

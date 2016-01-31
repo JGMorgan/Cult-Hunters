@@ -26,9 +26,9 @@ public class Boss extends Enemy {
         hitbox = new Rectangle(x,y,sprite.getWidth()/2,sprite.getHeight());
         walkFrames = TextureRegion.split(spritesheet, spritesheet.getWidth() / 5, spritesheet.getHeight() / 4);
         animDownLeft = new Animation(0.2f, walkFrames[0]);
-        animDownRight = new Animation(0.2f, walkFrames[0]);
-        animUpLeft = new Animation(0.2f, walkFrames[0]);
-        animUpRight = new Animation(0.2f, walkFrames[0]);
+        animDownRight = new Animation(0.2f, walkFrames[2]);
+        animUpLeft = new Animation(0.2f, walkFrames[1]);
+        animUpRight = new Animation(0.2f, walkFrames[3]);
     }
     public void render(){
 
