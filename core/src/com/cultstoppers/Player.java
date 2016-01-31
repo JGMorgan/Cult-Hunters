@@ -150,13 +150,13 @@ public class Player extends Entity{
     }
     public void swordMove(){
 
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
+        if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
             bullets.add(new Sword(x, y, 'u'));
-        }else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
             bullets.add(new Sword(x, y, 'd'));
-        }else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
             bullets.add(new Sword(x, y, 'l'));
-        }else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+        }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
             bullets.add(new Sword(x, y, 'r'));
         }
     }
