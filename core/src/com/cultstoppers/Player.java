@@ -181,13 +181,13 @@ public class Player extends Entity{
     }
     public void pistolMove() {
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            bullets.add(new Pistol(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'u'));
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'u'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            bullets.add(new Pistol(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'd'));
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'd'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            bullets.add(new Pistol(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'l'));
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'l'));
         }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            bullets.add(new Pistol(x+(spritesheet.getWidth()/10), y+(spritesheet.getHeight()/8), 'r'));
+            bullets.add(new Pistol(x+(spritesheet.getWidth()/20), y+(spritesheet.getHeight()/16), 'r'));
         }
     }
     public void swordMove(){
