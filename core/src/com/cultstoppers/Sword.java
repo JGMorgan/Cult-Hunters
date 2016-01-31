@@ -43,9 +43,9 @@ public class Sword extends Weapon {
     };
 
     public boolean isOutOfBounds(){
-        return (x > initX + Gdx.graphics.getWidth()/15) ||
-                (x < initX - Gdx.graphics.getWidth()/15) ||
-                (y > initY + Gdx.graphics.getWidth()/15) ||
-                (y < initY - Gdx.graphics.getWidth()/15);
+        return (x > initX + Gdx.graphics.getWidth()/10) ||
+                (x < initX - Gdx.graphics.getWidth()/5) ||
+                (y > initY + Gdx.graphics.getWidth()/10) ||
+                (y < initY - Gdx.graphics.getWidth()/5);
     }
 }
