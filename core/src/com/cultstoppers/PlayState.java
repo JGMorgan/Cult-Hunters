@@ -54,5 +54,6 @@ public class PlayState extends State{
         batch.begin();
         batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.end();
+        p.renderUI();
         }
     }

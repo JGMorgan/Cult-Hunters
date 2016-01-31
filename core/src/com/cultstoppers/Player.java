@@ -103,9 +103,11 @@ public class Player extends Entity{
         batch.begin();
         batch.draw(texture, x, y);//, sprite.getWidth()/4, sprite.getHeight()/4);
         batch.end();
+
+    }
+    public void renderUI(){
         ui.render();
     }
-
     public void checkWall(){
         if((x > Gdx.graphics.getWidth() - sprite.getWidth()/4)){
             x = Gdx.graphics.getWidth() - sprite.getWidth()/4;
