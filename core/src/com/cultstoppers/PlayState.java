@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Created by jose on 1/30/16.
  */
 public class PlayState extends State{
-    Boss boss;
+    Boss boss = new Boss();
     ArrayList<Boss> bosslist = new ArrayList<Boss>();
     Player p;
     Map m;
@@ -56,8 +56,9 @@ public class PlayState extends State{
 
             p.move();
             p.render();
-            if(mapCount==3)
+            if(mapCount==3){
                 boss.render();
+            }
             batch.begin();
             batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             batch.end();
@@ -77,28 +78,10 @@ public class PlayState extends State{
         public void mapFinish(int mapCount2){
 
             m=new Map();
-            if(mapCount2==3){
-                int makebosscount=0;
-                enemies.add(new Enemy(1));
-                boss = new Boss();
-                //bosslist.add(boss);
-                enemies.get(0).render();
-                //bosslist.get(0).render();
-                makebosscount++;
-            }
 
                 for(int i = 0; i < 5; i++){
                     enemies.add(new Enemy(i));
                 }
-
-//                for (int i = 0; i < enemies.size(); i++) {
-//                    enemies.get(i).render();
-//                    enemies.get(i).move(p, enemies, i);
-//                        if (enemies.get(i).isDead()) {
-//                            enemies.remove(i);
-//                    }
-//                }
-
 
         }
 
