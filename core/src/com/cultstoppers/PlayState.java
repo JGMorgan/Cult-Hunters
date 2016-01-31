@@ -59,7 +59,7 @@ public class PlayState extends State{
 
             p.move();
             p.render();
-            if(mapCount==3){
+            if(mapCount==4){
                 if(altar !=null) {
                     altar.render();
                     boss.render();
