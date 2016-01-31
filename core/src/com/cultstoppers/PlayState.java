@@ -111,19 +111,18 @@ public class PlayState extends State{
 
             batch.end();
             p.renderUI();
-            if ((enemies.size() == 0 && altar == null) && ((p.x + p.texture.getRegionWidth()/2) >= (Gdx.graphics.getWidth()) || ((p.y + p.texture.getRegionHeight()/2) >= (Gdx.graphics.getHeight()))||(p.x + p.texture.getRegionWidth()/2) >= (Gdx.graphics.getWidth()) || (p.y + p.texture.getRegionHeight()/2) <= (Gdx.graphics.getWidth()/10) || (p.x + p.texture.getRegionHeight()/2) <= (Gdx.graphics.getHeight()/4))) {
+            if ((enemies.size() == 0 && altar == null) && ((p.x + p.texture.getRegionWidth()/2) >= (Gdx.graphics.getWidth()) || ((p.y + p.texture.getRegionHeight()/2) >= (Gdx.graphics.getHeight())) || ((p.x + p.texture.getRegionWidth()/2) <= (Gdx.graphics.getWidth()/10)) || ((p.y + p.texture.getRegionHeight()/2) <= (Gdx.graphics.getHeight()/4)))) {
 
                 if ((p.x + p.texture.getRegionWidth()/2) >= (Gdx.graphics.getWidth())){
                     p.x = 0;
-                }else{
+                }else if(((p.y + p.texture.getRegionHeight()/2) >= (Gdx.graphics.getHeight()))){
                     p.y = 0;
+                }else if(((p.x + p.texture.getRegionWidth()/2) <= (Gdx.graphics.getWidth()/10))){
+                    p.x=(Gdx.graphics.getWidth());
+                }else if(((p.y + p.texture.getRegionHeight()/2) <= (Gdx.graphics.getHeight()/4))){
+                    p.y=((Gdx.graphics.getHeight()));
                 }
 
-                if ((p.x + p.texture.getRegionWidth()/2) <= (Gdx.graphics.getWidth()/10)){
-                    p.y = 100;
-                }else{
-                    p.y = 100;
-                }
                 for(int i = 0; i < p.bullets.size(); i++){
                     p.bullets.remove(p.bullets.size() -1);
                 }
