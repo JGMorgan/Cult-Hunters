@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * Created by jose on 1/30/16.
  */
 public class PlayState extends State{
+
     Player p;
     Map m;
     ArrayList<Enemy> enemies;
@@ -18,6 +19,8 @@ public class PlayState extends State{
     Music music;
     Texture vignette;
     SpriteBatch batch;
+    int mapCount=0;
+
     public PlayState(){
         p = new Player();
         m = new Map();
@@ -35,6 +38,7 @@ public class PlayState extends State{
 
     public void render() {
 
+
         if (pause) {
             music.pause();
         } else {
@@ -45,8 +49,8 @@ public class PlayState extends State{
                 if (enemies.get(i).isDead()) {
                     enemies.remove(i);
                 }
-
             }
+
         }
 
         p.move();
@@ -55,5 +59,39 @@ public class PlayState extends State{
         batch.draw(vignette, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.end();
         p.renderUI();
+        if((enemies.size()==0)&&((p.x+p.texture.getRegionWidth())>=(Gdx.graphics.getWidth())||((p.y+p.texture.getRegionHeight())>=(Gdx.graphics.getHeight())))){
+
+            mapCount++;
+            mapFinish(mapCount);
+
         }
+    }
+
+        public void mapFinish(int mapCount2){
+
+            m=new Map();
+
+                for(int i = 0; i < 5; i++){
+                    enemies.add(new Enemy(i));
+                }
+
+                for (int i = 0; i < enemies.size(); i++) {
+                    enemies.get(i).render();
+                    enemies.get(i).move(p, enemies, i);
+                        if (enemies.get(i).isDead()) {
+                            enemies.remove(i);
+                    }
+                }
+
+                if(mapCount2==3){
+                    int makebosscount=0;
+
+                    Boss newBoss= new Boss();
+                    newBoss.render();
+                    makebosscount++;
+
+                }
+
+        }
+
     }
