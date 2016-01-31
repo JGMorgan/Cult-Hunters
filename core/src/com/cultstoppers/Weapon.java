@@ -33,7 +33,7 @@ public abstract class Weapon {
         if((this.hitbox2 != null||this.hitbox3!= null||this.hitbox4!= null||this.hitbox5!= null)){
         if((hitbox.overlaps(this.hitbox)) || (hitbox.overlaps(this.hitbox2)) || (hitbox.overlaps(this.hitbox3)) || (hitbox.overlaps(this.hitbox4)) || (hitbox.overlaps(this.hitbox5))){
             return true;
-        }else return false;
+        }else {return false;}
         }else if(hitbox.overlaps(this.hitbox)){
             return true;
         }
