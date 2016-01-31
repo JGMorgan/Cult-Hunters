@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class MenuState extends State {
 
+    float stateTime;
     Texture menu;
     SpriteBatch batch;
     boolean play;
@@ -33,6 +34,7 @@ public class MenuState extends State {
         batch.end();
         if(play){
             //if play or start button is hit then switch to character select screen
+
         }
     }
 

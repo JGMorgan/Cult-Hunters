@@ -9,12 +9,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
 	State state;
-	State instruction;
 	char stateType;
 	@Override
 	public void create () {
         state = new MenuState();
-		instruction=new MenuState();
 		stateType = 'm';
     }
 
