@@ -13,6 +13,7 @@ public class PlayState extends State{
     ArrayList<Enemy> enemies;
     boolean pause = false;
     Music music;
+
     public PlayState(){
         p = new Player();
         enemies = new ArrayList<Enemy>();
@@ -26,20 +27,19 @@ public class PlayState extends State{
         music.setLooping(true);}
 
     public void render() {
-                if (pause) {
-                    music.pause();
-                } else {
-                    for (int i = 0; i < enemies.size(); i++) {
-                        enemies.get(i).render();
-                        enemies.get(i).move(p, enemies, i);
-                        if (enemies.get(i).isDead()) {
-                            enemies.remove(i);
-                        }
-                    }
-                    p.move();
-                    p.render();
+        if (pause) {
+            music.pause();
+        } else {
+            for (int i = 0; i < enemies.size(); i++) {
+                enemies.get(i).render();
+                enemies.get(i).move(p, enemies, i);
+                if (enemies.get(i).isDead()) {
+                    enemies.remove(i);
                 }
 
-
+            }
+        }
+        p.move();
+        p.render();
         }
     }
