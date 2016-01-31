@@ -78,24 +78,25 @@ public class PlayState extends State{
                         altar = null;
                         mapCount=0;
                         bossCount++;
+                        int healthMax=8;
                         int healthGain=3;
 
 
                             for (int i = 0; i < healthGain; i++) {
-                                if(p.ui.numHealth<8){
+                                if(p.ui.numHealth<healthMax){
 
                                 p.ui.numHealth++;
                                 p.ui.healthBar.add(p.ui.healthIcon);
                                 p.health++;
                                 }
-                                if(p.ui.numHealth>8){
+                                if(p.ui.numHealth>healthMax){
                                     p.health--;
                                     p.ui.numHealth--;
                                     p.ui.healthBar.remove(0);
                                 }
                             }
                         p.speed=p.speed+2;
-
+                        if(healthMax>5){healthMax--;}
 
                     }
                 }
