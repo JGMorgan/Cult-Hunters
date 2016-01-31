@@ -38,7 +38,7 @@ public class MachineGun extends Weapon{
         initY = y;
         this.x = x;
         this.y = y;
-        hitbox = new Rectangle(this.x,this.y,sprite.getWidth()/8,sprite.getHeight()/4);
+        hitbox = new Rectangle(this.x,this.y,sprite.getWidth()/4,sprite.getHeight()/8);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class MachineGun extends Weapon{
         }
 
         batch.begin();
-        batch.draw(texture, x, y, texture.getRegionWidth()/4, texture.getRegionHeight()/4);
+        batch.draw(texture, x, y, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
         batch.end();
     }
     public boolean isOutOfBounds(){

@@ -30,7 +30,7 @@ public class Pistol extends Weapon {
         this.dir = dir;
         this.x = x;
         this.y = y;
-        hitbox = new Rectangle(this.x,this.y,sprite.getWidth()/8,sprite.getHeight()/4);
+        hitbox = new Rectangle(this.x,this.y,sprite.getWidth()/2,sprite.getHeight()/4);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Pistol extends Weapon {
             x+=speed;
         }
         batch.begin();
-        batch.draw(texture, x, y, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
+        batch.draw(texture, x, y, texture.getRegionWidth(), texture.getRegionHeight());
         batch.end();
     }
 }

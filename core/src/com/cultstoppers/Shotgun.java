@@ -49,11 +49,11 @@ public class Shotgun extends Weapon{
         this.y2 = y;
         this.y3 = y;
         this.y4 = y;
-        hitbox = new Rectangle(this.x,this.y,sprite.getWidth()/4,sprite.getHeight()/8);
-        hitbox2 = new Rectangle(this.x1,this.y1,sprite.getWidth()/4,sprite.getHeight()/8);
-        hitbox3 = new Rectangle(this.x2,this.y2,sprite.getWidth()/4,sprite.getHeight()/8);
-        hitbox4 = new Rectangle(this.x3,this.y3,sprite.getWidth()/4,sprite.getHeight()/8);
-        hitbox5 = new Rectangle(this.x4,this.y4,sprite.getWidth()/4,sprite.getHeight()/8);
+        hitbox = new Rectangle(this.x,this.y,sprite.getWidth()/2,sprite.getHeight()/4);
+        hitbox2 = new Rectangle(this.x1,this.y1,sprite.getWidth()/2,sprite.getHeight()/4);
+        hitbox3 = new Rectangle(this.x2,this.y2,sprite.getWidth()/2,sprite.getHeight()/4);
+        hitbox4 = new Rectangle(this.x3,this.y3,sprite.getWidth()/2,sprite.getHeight()/4);
+        hitbox5 = new Rectangle(this.x4,this.y4,sprite.getWidth()/2,sprite.getHeight()/4);
     }
 
     @Override
@@ -118,11 +118,11 @@ public class Shotgun extends Weapon{
             x4 += Math.sin(-3.1415 / 6) * speed;
         }
         batch.begin();
-        batch.draw(texture, x, y, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
-        batch.draw(texture, x1, y1, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
-        batch.draw(texture, x2, y2, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
-        batch.draw(texture, x3, y3, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
-        batch.draw(texture, x4, y4, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
+        batch.draw(texture, x, y, texture.getRegionWidth(), texture.getRegionHeight());
+        batch.draw(texture, x1, y1, texture.getRegionWidth(), texture.getRegionHeight());
+        batch.draw(texture, x2, y2, texture.getRegionWidth(), texture.getRegionHeight());
+        batch.draw(texture, x3, y3, texture.getRegionWidth(), texture.getRegionHeight());
+        batch.draw(texture, x4, y4, texture.getRegionWidth(), texture.getRegionHeight());
         batch.end();
     }
 
