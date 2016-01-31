@@ -72,16 +72,16 @@ public class PlayState extends State{
         }
 
         public void mapFinish(int mapCount2){
-
+            ArrayList<Boss> bosslist = new ArrayList<Boss>();
             m=new Map();
             if(mapCount2==3){
                 int makebosscount=0;
                 enemies.add(new Enemy(1));
                 Boss newBoss= new Boss();
+                bosslist.add(newBoss);
                 enemies.get(0).render();
-                newBoss.render();
+                bosslist.get(0).render();
                 makebosscount++;
-
             }
 
                 for(int i = 0; i < 5; i++){
