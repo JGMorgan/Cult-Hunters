@@ -211,6 +211,5 @@ public class Player extends Entity{
                 //health--;
             }
         }
-
     }
 }
