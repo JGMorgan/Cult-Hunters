@@ -2,7 +2,9 @@ package com.cultstoppers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import java.lang.Math;
 
@@ -19,9 +21,12 @@ public class Shotgun extends Weapon{
 //    Rectangle hitbox5;
 
     public Shotgun(int x, int y, char dir){
+        stateTime=0;
         WeaponType="shotgun";
         batch = new SpriteBatch();
-        sprite = new Texture("bullet.png");
+        sprite = new Texture("Fire_Bullet.png");
+        animFrames = TextureRegion.split(sprite, sprite.getWidth() / 2, sprite.getHeight());
+        anim = new Animation(0.2f, animFrames[0]);
         speed = 5;
         damage = 1;
         initX = x;
@@ -37,15 +42,16 @@ public class Shotgun extends Weapon{
         this.y2 = y;
         this.y3 = y;
         this.y4 = y;
-        hitbox = new Rectangle(this.x,this.y,sprite.getWidth(),sprite.getHeight());
-        hitbox2 = new Rectangle(this.x1,this.y1,sprite.getWidth(),sprite.getHeight());
-        hitbox3 = new Rectangle(this.x2,this.y2,sprite.getWidth(),sprite.getHeight());
-        hitbox4 = new Rectangle(this.x3,this.y3,sprite.getWidth(),sprite.getHeight());
-        hitbox5 = new Rectangle(this.x4,this.y4,sprite.getWidth(),sprite.getHeight());
+        hitbox = new Rectangle(this.x,this.y,sprite.getWidth()/4,sprite.getHeight()/2);
+        hitbox2 = new Rectangle(this.x1,this.y1,sprite.getWidth()/4,sprite.getHeight()/2);
+        hitbox3 = new Rectangle(this.x2,this.y2,sprite.getWidth()/4,sprite.getHeight()/2);
+        hitbox4 = new Rectangle(this.x3,this.y3,sprite.getWidth()/4,sprite.getHeight()/2);
+        hitbox5 = new Rectangle(this.x4,this.y4,sprite.getWidth()/4,sprite.getHeight()/2);
     }
 
     @Override
     public void update() {
+        stateTime += Gdx.graphics.getDeltaTime();
         hitbox.setPosition(x,y);
 
         hitbox2.setPosition(x1,y1);
@@ -100,12 +106,13 @@ public class Shotgun extends Weapon{
             x3 += Math.sin(-3.1415 / 12) * speed;
             x4 += Math.sin(-3.1415 / 6) * speed;
         }
+        texture = anim.getKeyFrame(stateTime, true);
         batch.begin();
-        batch.draw(sprite, x, y);
-        batch.draw(sprite, x1, y1);
-        batch.draw(sprite, x2, y2);
-        batch.draw(sprite, x3, y3);
-       batch.draw(sprite, x4, y4);
+        batch.draw(texture, x, y, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
+        batch.draw(texture, x1, y1, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
+        batch.draw(texture, x2, y2, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
+        batch.draw(texture, x3, y3, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
+        batch.draw(texture, x4, y4, texture.getRegionWidth()/2, texture.getRegionHeight()/2);
         batch.end();
     }
 

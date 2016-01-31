@@ -2,7 +2,9 @@ package com.cultstoppers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 /**
@@ -13,6 +15,10 @@ public abstract class Weapon {
     char dir;
     int damage;
     Texture sprite;
+    TextureRegion texture;
+    Animation anim;
+    TextureRegion[][] animFrames;
+    float stateTime;
     SpriteBatch batch;
     Rectangle hitbox;
     Rectangle hitbox2;
