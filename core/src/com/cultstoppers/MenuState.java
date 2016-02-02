@@ -21,7 +21,7 @@ public class MenuState extends State {
         play = false;
         confirm = false;
         ready = false;
-        menu = new Texture("TitleScreen.png");
+        menu = new Texture(Gdx.files.internal("TitleScreen.png"));
         batch = new SpriteBatch();
         music = Gdx.audio.newMusic(Gdx.files.internal("audio/ggjtitle.mp3"));
         music.play();
